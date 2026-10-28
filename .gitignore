@@ -10,3 +10,4 @@ __pycache__/
 .impeccable-tmp/
 .vercel
 node_modules/
+.env*

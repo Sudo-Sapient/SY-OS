@@ -17,13 +17,13 @@ def env_bool(name, default):
 
 # ---------- security ----------
 
-# Vercel sets VERCEL=1; there DEBUG is off unless explicitly turned on.
-DEBUG = env_bool("DJANGO_DEBUG", not os.environ.get("VERCEL"))
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY") or (
-    "dev-only-insecure-key" if DEBUG else None  # production refuses to start without a real key
-)
+# Off unless explicitly turned on. manage.py turns it on for local development; wsgi (servers, Vercel) never does.
+DEBUG = env_bool("DJANGO_DEBUG", False)
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY") or ("dev-only-insecure-key" if DEBUG else "")
 if not SECRET_KEY:
-    raise RuntimeError("Set DJANGO_SECRET_KEY")
+    raise RuntimeError("Set DJANGO_SECRET_KEY (see .env.example)")
+# Demo deployments show the sample logins on the login page and allow seed_demo; real ones never do.
+DEMO_MODE = env_bool("SYOS_DEMO", DEBUG)
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".vercel.app", *filter(None, os.environ.get("DJANGO_ALLOWED_HOSTS", "").split(","))]
 CSRF_TRUSTED_ORIGINS = ["https://*.vercel.app", *filter(None, os.environ.get("DJANGO_CSRF_TRUSTED_ORIGINS", "").split(","))]

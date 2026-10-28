@@ -2,6 +2,7 @@
 
 from functools import wraps
 
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 
@@ -33,7 +34,7 @@ def roles(*allowed):
 
 def nav_context(request):
     if not request.user.is_authenticated:
-        return {}
+        return {"demo_mode": settings.DEMO_MODE}
     r = role(request.user)
     return {
         "user_role": r,

@@ -2,8 +2,9 @@ import math
 from datetime import timedelta
 from decimal import Decimal as D
 
+from django.conf import settings
 from django.contrib.auth.models import Group, User
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 from django.utils import timezone
 
@@ -37,6 +38,8 @@ class Command(BaseCommand):
 
     @transaction.atomic
     def handle(self, *args, **opts):
+        if not settings.DEMO_MODE:
+            raise CommandError("seed_demo creates users with known passwords; run it only with SYOS_DEMO=1 or DJANGO_DEBUG=1")
         if not Order.objects.exists():
             self.seed_orders()
         if not Line.objects.exists():

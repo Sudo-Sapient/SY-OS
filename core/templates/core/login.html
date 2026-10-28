@@ -16,6 +16,7 @@
       <label>{% translate "Password" %}<input name="password" type="password" autocomplete="current-password" required></label>
       <button class="btn block">{% translate "Log in" %}</button>
     </form>
+    {% if demo_mode %}
     <details class="demo">
       <summary>{% translate "Demo logins" %}</summary>
       <dl>
@@ -25,6 +26,7 @@
         <div><dt>{% translate "Cutting in-charge" %}</dt><dd>cutting · cutting123</dd></div>
       </dl>
     </details>
+    {% endif %}
     <form action="{% url 'set_language' %}" method="post" class="lang">{% csrf_token %}
       <input name="next" type="hidden" value="{{ request.get_full_path }}">
       {% get_current_language as LANG %}{% get_available_languages as LANGS %}{% get_language_info_list for LANGS as langs %}
