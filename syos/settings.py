@@ -95,6 +95,7 @@ def database_from_url(url):
         "PORT": u.port or "",
         "OPTIONS": options,
         "CONN_MAX_AGE": 0,  # serverless: no long-lived connections; use the pooled URL in production
+        "DISABLE_SERVER_SIDE_CURSORS": True,  # needed behind a transaction pooler (Neon pooled URL)
     }
 
 

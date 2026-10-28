@@ -11,3 +11,8 @@ __pycache__/
 .vercel
 node_modules/
 .env*
+!.env.example
+# agent skill files added by marketplace integrations
+.agents/
+.claude/
+skills-lock.json
