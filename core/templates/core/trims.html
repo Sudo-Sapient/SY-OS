@@ -1,0 +1,25 @@
+{% extends "core/base.html" %}{% load i18n humanize %}
+{% block title %}{% translate "Trims" %}{% endblock %}
+{% block content %}
+<div class="head"><h1>{% translate "Trims" %}</h1></div>
+{% for b in orders %}
+<section class="block">
+  <div class="block-head">
+    <h2><a href="{% url 'order_detail' b.order.pk %}">{{ b.order.order_no }}</a> <span class="muted">· {{ b.order.style }} · {{ b.order.total_qty|intcomma }} {% translate "pcs" %}</span></h2>
+    {% if b.to_order and can_edit_orders %}
+    <form method="post">{% csrf_token %}<input type="hidden" name="order" value="{{ b.order.pk }}"><button class="btn">{% blocktranslate count n=b.to_order %}Raise POs for {{ n }} line{% plural %}Raise POs for {{ n }} lines{% endblocktranslate %}</button></form>
+    {% endif %}
+  </div>
+  <div class="two">
+    <div class="tbl-scroll"><table class="tbl">
+      <thead><tr><th>{% translate "Item" %}</th><th class="num">{% translate "Required" %}</th><th class="num">{% translate "On PO" %}</th><th class="num">{% translate "To order" %}</th></tr></thead>
+      <tbody>{% for r in b.rows %}<tr><td>{{ r.trim.item }}<span class="sub">{{ r.trim.per_piece|floatformat:"-3" }} {{ r.trim.unit }}/pc · +{{ r.trim.wastage_pct|floatformat:"-1" }}% · {{ r.trim.supplier|default:"—" }}</span>{% if r.sizes %}<div class="chips">{% for s, n in r.sizes %}<span class="chip">{{ s }} {{ n|intcomma }}</span>{% endfor %}</div>{% endif %}</td><td class="num">{{ r.need|intcomma }}</td><td class="num">{{ r.on_po|intcomma }}</td><td class="num">{% if r.to_order %}<b>{{ r.to_order|intcomma }}</b>{% else %}<span class="muted">—</span>{% endif %}</td></tr>{% empty %}<tr><td colspan="4" class="muted">{% translate "No trims on this style yet." %}</td></tr>{% endfor %}</tbody>
+    </table></div>
+    <div class="tbl-scroll"><table class="tbl">
+      <thead><tr><th>{% translate "PO" %}</th><th>{% translate "Supplier" %}</th><th>{% translate "Required by" %}</th><th>{% translate "Status" %}</th></tr></thead>
+      <tbody>{% for po in b.pos %}<tr class="click" onclick="location='{% url 'trim_po' po.pk %}'"><td><a href="{% url 'trim_po' po.pk %}"><b>{{ po.po_no }}</b></a></td><td>{{ po.supplier }}</td><td>{{ po.required_by|date:"d M" }}</td><td>{% include "core/_po_status.html" with s=po.status %}</td></tr>{% empty %}<tr><td colspan="4" class="muted">{% translate "No POs raised yet." %}</td></tr>{% endfor %}</tbody>
+    </table></div>
+  </div>
+</section>
+{% endfor %}
+{% endblock %}

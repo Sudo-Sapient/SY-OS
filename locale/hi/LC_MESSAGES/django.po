@@ -1,8 +1,161 @@
+#
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-28 17:24+0530\n"
 "Language: hi\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#, python-format
+msgid "%(n)s POs raised for %(order)s."
+msgstr "%(order)s के लिए %(n)s PO बने।"
+
+msgid "Quantities must be whole numbers, not negative."
+msgstr "मात्रा पूरी संख्या हो, नेगेटिव नहीं।"
+
+msgid "Enter the supplier's challan number."
+msgstr "सप्लायर का चालान नंबर डालें।"
+
+msgid "Enter the quantity received for at least one line."
+msgstr "कम से कम एक लाइन की प्राप्त मात्रा डालें।"
+
+#, python-format
+msgid "Receipt saved against challan %(c)s."
+msgstr "चालान %(c)s पर रसीद सेव हुई।"
+
+#, python-format
+msgid "PO %(po)s — %(order)s / %(style)s / buyer PO %(bpo)s"
+msgstr "PO %(po)s — %(order)s / %(style)s / बायर PO %(bpo)s"
+
+#, python-format
+msgid "Required by %(d)s"
+msgstr "%(d)s तक चाहिए"
+
+msgid "Thank you — SY Exports"
+msgstr "धन्यवाद — SY Exports"
+
+msgid "Numbers only — no letters or negative values."
+msgstr "सिर्फ़ संख्या — अक्षर या नेगेटिव नहीं।"
+
+msgid "Enter at least one roll."
+msgstr "कम से कम एक रोल डालें।"
+
+msgid "Enter pieces cut for at least one size."
+msgstr "कम से कम एक साइज़ के कटे पीस डालें।"
+
+#, python-format
+msgid "Roll %(r)s: choose the fabric lot."
+msgstr "रोल %(r)s: फैब्रिक लॉट चुनें।"
+
+#, python-format
+msgid ""
+"Roll %(r)s is from lot %(lot)s (%(c)s, %(d)s\") — this lay is %(c2)s, "
+"%(d2)s\". Blocked."
+msgstr ""
+"रोल %(r)s लॉट %(lot)s (%(c)s, %(d)s\") का है — यह ले %(c2)s, %(d2)s\" का है।"
+" रोका गया।"
+
+#, python-format
+msgid "Roll %(r)s: returned + rejected kg is more than the roll weight."
+msgstr "रोल %(r)s: वापस + रिजेक्ट kg रोल के वज़न से ज़्यादा है।"
+
+#, python-format
+msgid "Roll %(r)s GSM %(g)s is outside %(t)s ±5%%."
+msgstr "रोल %(r)s का GSM %(g)s, %(t)s ±5%% से बाहर है।"
+
+#, python-format
+msgid "Roll %(r)s width %(w)s\" is under the %(d)s\" table dia."
+msgstr "रोल %(r)s की चौड़ाई %(w)s\" है, टेबल डाया %(d)s\" से कम।"
+
+#, python-format
+msgid "Lot %(lot)s has only %(kg)s kg in hand."
+msgstr "लॉट %(lot)s में सिर्फ़ %(kg)s kg बचा है।"
+
+#, python-format
+msgid ""
+"Consumption is %(p)s%% against costed — beyond ±10%%, so the lot is blocked."
+" Check the roll weights and piece counts."
+msgstr ""
+"खपत कॉस्टिंग से %(p)s%% है — ±10%% से ज़्यादा, इसलिए लॉट रोका गया। रोल वज़न "
+"और पीस गिनती जांचें।"
+
+msgid "Tick the confirmation to use rolls outside tolerance."
+msgstr "सीमा से बाहर रोल इस्तेमाल करने के लिए पुष्टि पर टिक करें।"
+
+#, python-format
+msgid "Cut lot %(c)s saved — consumption %(p)s%%."
+msgstr "कट लॉट %(c)s सेव हुआ — खपत %(p)s%%।"
+
+msgid ""
+"Pieces must be whole numbers, and colour and size must belong to the line's "
+"order."
+msgstr "पीस पूरी संख्या हों, और रंग व साइज़ लाइन के ऑर्डर के हों।"
+
+#, python-format
+msgid "%(n)s lines saved for %(h)s:00."
+msgstr "%(h)s:00 के लिए %(n)s लाइनें सेव हुईं।"
+
+#, python-format
+msgid "Only %(n)s passed pieces of %(c)s / %(s)s are waiting to be packed."
+msgstr "%(c)s / %(s)s के सिर्फ़ %(n)s पास पीस पैकिंग के लिए बाकी हैं।"
+
+msgid "Enter the carton numbers."
+msgstr "कार्टन नंबर डालें।"
+
+#, python-format
+msgid "Packed %(n)s pcs of %(c)s / %(s)s."
+msgstr "%(c)s / %(s)s के %(n)s पीस पैक हुए।"
+
+#, python-format
+msgid "Only %(n)s sewn pieces of %(c)s / %(s)s are waiting for checking."
+msgstr "%(c)s / %(s)s के सिर्फ़ %(n)s सिले पीस चेकिंग के लिए बाकी हैं।"
+
+msgid "Rework + reject can't be more than pieces checked."
+msgstr "रीवर्क + रिजेक्ट चेक किए पीस से ज़्यादा नहीं हो सकते।"
+
+#, python-format
+msgid "Only %(n)s pieces are in rework."
+msgstr "सिर्फ़ %(n)s पीस रीवर्क में हैं।"
+
+msgid "Choose the main defect for the rework and rejects."
+msgstr "रीवर्क और रिजेक्ट का मुख्य डिफेक्ट चुनें।"
+
+#, python-format
+msgid "Checked %(n)s pcs of %(c)s / %(s)s — %(p)s passed."
+msgstr "%(c)s / %(s)s के %(n)s पीस चेक — %(p)s पास।"
+
+#, python-format
+msgid "%(l)s under 80%% of target for the last 3 hours"
+msgstr "%(l)s पिछले 3 घंटे से लक्ष्य के 80%% से कम"
+
+msgid "Cut"
+msgstr "कटा"
+
+msgid "Sewn"
+msgstr "सिला"
+
+msgid "Passed"
+msgstr "पास"
+
+msgid "Packed"
+msgstr "पैक"
+
+#, python-format
+msgid "%(o)s: %(c)s %(d)s\" fabric lands after cut-start — %(kg)s kg late"
+msgstr "%(o)s: %(c)s %(d)s\" फैब्रिक कटिंग के बाद आएगा — %(kg)s kg देर से"
+
+#, python-format
+msgid "%(o)s: %(c)s %(d)s\" fabric short — %(kg)s kg still to book"
+msgstr "%(o)s: %(c)s %(d)s\" फैब्रिक कम — %(kg)s kg अभी बुक करना है"
+
+#, python-format
+msgid "Trims PO %(po)s from %(s)s is overdue"
+msgstr "%(s)s का ट्रिम्स PO %(po)s देर से है"
+
+#, python-format
+msgid "Cut lot %(c)s used %(p)s%% more fabric than costed"
+msgstr "कट लॉट %(c)s में कॉस्टिंग से %(p)s%% ज़्यादा फैब्रिक लगा"
 
 msgid "Manual"
 msgstr "मैनुअल"
@@ -214,14 +367,143 @@ msgstr "मशीन / बैच / यार्न लॉट"
 msgid "note"
 msgstr "नोट"
 
+msgid "PO no."
+msgstr "PO नं."
+
+msgid "required by"
+msgstr "तक चाहिए"
+
+msgid "challan no."
+msgstr "चालान नं."
+
+msgid "Neps / slubs / contamination"
+msgstr "नेप्स / स्लब्स / गंदगी"
+
+msgid "Holes / drop stitch / needle lines"
+msgstr "छेद / ड्रॉप स्टिच / नीडल लाइन"
+
+msgid "Shade variation / dye spots"
+msgstr "शेड अंतर / डाई धब्बे"
+
+msgid "Chemical or softener spots"
+msgstr "केमिकल या सॉफ्टनर धब्बे"
+
+msgid "GSM / width off / spirality"
+msgstr "GSM / चौड़ाई गलत / स्पाइरैलिटी"
+
+msgid "Minor"
+msgstr "माइनर"
+
+msgid "Major"
+msgstr "मेजर"
+
+msgid "Critical"
+msgstr "क्रिटिकल"
+
+msgid "cut lot no."
+msgstr "कट लॉट नं."
+
+msgid "fabric lot"
+msgstr "फैब्रिक लॉट"
+
+msgid "roll no."
+msgstr "रोल नं."
+
+msgid "GSM"
+msgstr "GSM"
+
+msgid "width (in)"
+msgstr "चौड़ाई (इंच)"
+
+msgid "defect"
+msgstr "डिफेक्ट"
+
+msgid "level"
+msgstr "स्तर"
+
+msgid "kg rejected"
+msgstr "रिजेक्ट kg"
+
+msgid "kg returned"
+msgstr "वापस kg"
+
+msgid "pieces"
+msgstr "पीस"
+
+msgid "line"
+msgstr "लाइन"
+
+msgid "operators"
+msgstr "ऑपरेटर"
+
+msgid "order"
+msgstr "ऑर्डर"
+
+msgid "target / hour"
+msgstr "लक्ष्य / घंटा"
+
+msgid "hour"
+msgstr "घंटा"
+
+msgid "Open seam"
+msgstr "ओपन सीम"
+
+msgid "Skip stitch"
+msgstr "स्किप स्टिच"
+
+msgid "Uncut thread"
+msgstr "बिना कटा धागा"
+
+msgid "Oil / stain"
+msgstr "तेल / दाग"
+
+msgid "Measurement"
+msgstr "नाप"
+
+msgid "Shade variation"
+msgstr "शेड अंतर"
+
+msgid "Hole / damage"
+msgstr "छेद / नुकसान"
+
+msgid "Label wrong"
+msgstr "गलत लेबल"
+
+msgid "checked"
+msgstr "चेक किए"
+
+msgid "rework"
+msgstr "रीवर्क"
+
+msgid "reject"
+msgstr "रिजेक्ट"
+
+msgid "rework OK'd"
+msgstr "रीवर्क ठीक"
+
+msgid "main defect"
+msgstr "मुख्य डिफेक्ट"
+
+msgid "carton nos."
+msgstr "कार्टन नं."
+
 msgid "No party yet"
 msgstr "अभी पार्टी नहीं"
+
+msgid "Overdue"
+msgstr "देर"
+
+msgid "Due"
+msgstr "देय"
 
 msgid "Copied"
 msgstr "कॉपी हो गया"
 
-msgid "Copy for WhatsApp"
-msgstr "WhatsApp के लिए कॉपी करें"
+msgid "Copy WhatsApp message"
+msgstr "WhatsApp संदेश कॉपी करें"
+
+msgid "Preview message"
+msgstr "संदेश देखें"
 
 msgid "Orders"
 msgstr "ऑर्डर"
@@ -244,8 +526,20 @@ msgstr "फैब्रिक प्लानिंग"
 msgid "Costing"
 msgstr "कॉस्टिंग"
 
+msgid "Admin"
+msgstr "एडमिन"
+
 msgid "Repeat this style"
 msgstr "यह स्टाइल रिपीट करें"
+
+msgid "Received"
+msgstr "मिल गया"
+
+msgid "Partial"
+msgstr "आंशिक"
+
+msgid "On order"
+msgstr "ऑर्डर पर"
 
 msgid "On track"
 msgstr "समय पर"
@@ -259,17 +553,20 @@ msgstr "कम बुक किया"
 msgid "No dia program"
 msgstr "डाया प्रोग्राम नहीं"
 
-msgid "Preview"
-msgstr "प्रीव्यू"
+msgid "Main"
+msgstr "मुख्य"
 
-msgid "Trims PO"
-msgstr "ट्रिम्स PO"
+msgid "Trims"
+msgstr "ट्रिम्स"
 
 msgid "Cutting"
 msgstr "कटिंग"
 
-msgid "Hourly entry"
-msgstr "घंटे की एंट्री"
+msgid "Sewing"
+msgstr "सिलाई"
+
+msgid "Checking & packing"
+msgstr "चेकिंग और पैकिंग"
 
 msgid "Dashboard"
 msgstr "डैशबोर्ड"
@@ -277,11 +574,84 @@ msgstr "डैशबोर्ड"
 msgid "Log out"
 msgstr "लॉग आउट"
 
-msgid "Preview of Milestone %(milestone)s — sample screen, nothing is saved yet"
-msgstr "माइलस्टोन %(milestone)s का प्रीव्यू — सैंपल स्क्रीन, अभी कुछ सेव नहीं होता"
+msgid "Order"
+msgstr "ऑर्डर"
 
-msgid "Admin only. Other logins cannot open this page or read these numbers — the server refuses them."
-msgstr "सिर्फ़ एडमिन। दूसरे लॉगिन यह पेज या ये आंकड़े नहीं देख सकते — सर्वर मना कर देता है।"
+msgid "Colour"
+msgstr "रंग"
+
+msgid "Size"
+msgstr "साइज़"
+
+msgid "Order qty"
+msgstr "ऑर्डर मात्रा"
+
+msgid "Checked"
+msgstr "चेक किए"
+
+msgid "In rework"
+msgstr "रीवर्क में"
+
+msgid "Balance"
+msgstr "बाकी"
+
+msgid "Checking — one table, one hour"
+msgstr "चेकिंग — एक टेबल, एक घंटा"
+
+msgid "Hour"
+msgstr "घंटा"
+
+msgid "Rework"
+msgstr "रीवर्क"
+
+msgid "Reject"
+msgstr "रिजेक्ट"
+
+msgid "Rework OK'd"
+msgstr "रीवर्क ठीक"
+
+msgid "Main defect"
+msgstr "मुख्य डिफेक्ट"
+
+msgid "Save checking"
+msgstr "चेकिंग सेव करें"
+
+msgid "Packing"
+msgstr "पैकिंग"
+
+msgid "Pieces"
+msgstr "पीस"
+
+msgid "Carton nos."
+msgstr "कार्टन नं."
+
+msgid "Save packing"
+msgstr "पैकिंग सेव करें"
+
+msgid "Recent checking"
+msgstr "हाल की चेकिंग"
+
+msgid "Date"
+msgstr "तारीख"
+
+msgid "Nothing checked yet."
+msgstr "अभी कुछ चेक नहीं हुआ।"
+
+msgid "Recent packing"
+msgstr "हाल की पैकिंग"
+
+msgid "Cartons"
+msgstr "कार्टन"
+
+msgid "Nothing packed yet."
+msgstr "अभी कुछ पैक नहीं हुआ।"
+
+msgid ""
+"Admin only. Other logins cannot open this page or read these numbers — the "
+"server refuses them."
+msgstr ""
+"सिर्फ़ एडमिन। दूसरे लॉगिन यह पेज या ये आंकड़े नहीं देख सकते — सर्वर मना कर "
+"देता है।"
 
 msgid "Cost per piece"
 msgstr "प्रति पीस लागत"
@@ -289,6 +659,7 @@ msgstr "प्रति पीस लागत"
 msgid "Quoted"
 msgstr "कोट"
 
+#, python-format
 msgid "%(m)s%% margin"
 msgstr "%(m)s%% मार्जिन"
 
@@ -301,11 +672,119 @@ msgstr "एक्सचेंज रेट"
 msgid "Save"
 msgstr "सेव करें"
 
-msgid "Colour"
-msgstr "रंग"
+msgid "New cut lot"
+msgstr "नया कट लॉट"
 
 msgid "Dia line"
 msgstr "डाया लाइन"
+
+msgid "Target"
+msgstr "लक्ष्य"
+
+msgid "table dia"
+msgstr "टेबल डाया"
+
+msgid "Rolls laid"
+msgstr "बिछाए रोल"
+
+msgid "Fabric lot"
+msgstr "फैब्रिक लॉट"
+
+msgid "Roll"
+msgstr "रोल"
+
+msgid "Width"
+msgstr "चौड़ाई"
+
+msgid "Defect"
+msgstr "डिफेक्ट"
+
+msgid "Level"
+msgstr "स्तर"
+
+msgid "Select…"
+msgstr "चुनें…"
+
+msgid "Pieces cut"
+msgstr "कटे पीस"
+
+msgid "Use these rolls anyway"
+msgstr "फिर भी ये रोल इस्तेमाल करें"
+
+msgid "Save cut lot"
+msgstr "कट लॉट सेव करें"
+
+msgid "Cut lot"
+msgstr "कट लॉट"
+
+msgid "Dia"
+msgstr "डाया"
+
+msgid "kg used"
+msgstr "इस्तेमाल kg"
+
+msgid "Costed kg"
+msgstr "कॉस्टेड kg"
+
+msgid "Consumption"
+msgstr "खपत"
+
+msgid "Bundles"
+msgstr "बंडल"
+
+msgid "No cut lots yet."
+msgstr "अभी कोई कट लॉट नहीं।"
+
+msgid "Fabric flags"
+msgstr "फैब्रिक फ्लैग"
+
+msgid "Flagged to"
+msgstr "किसे फ्लैग"
+
+msgid "No fabric defects flagged."
+msgstr "कोई फैब्रिक डिफेक्ट फ्लैग नहीं।"
+
+msgid "Fabric in hand"
+msgstr "हाथ में फैब्रिक"
+
+msgid "Lot"
+msgstr "लॉट"
+
+msgid "In-house kg"
+msgstr "स्टोर kg"
+
+msgid "In hand kg"
+msgstr "हाथ में kg"
+
+msgid "Sewn today"
+msgstr "आज सिले"
+
+msgid "Defect rate"
+msgstr "डिफेक्ट दर"
+
+msgid "Trims lines short"
+msgstr "कम ट्रिम्स लाइनें"
+
+msgid "Alerts"
+msgstr "अलर्ट"
+
+msgid "Output by hour"
+msgstr "घंटेवार उत्पादन"
+
+msgid "No sewing entered yet."
+msgstr "अभी कोई सिलाई एंट्री नहीं।"
+
+msgid "Lines today"
+msgstr "आज की लाइनें"
+
+msgid "pcs"
+msgstr "पीस"
+
+msgid "Top defects today"
+msgstr "आज के मुख्य डिफेक्ट"
+
+msgid "No defects recorded today."
+msgstr "आज कोई डिफेक्ट नहीं।"
 
 msgid "Need kg"
 msgstr "ज़रूरत kg"
@@ -328,7 +807,9 @@ msgstr "बुक करना है"
 msgid "Expected inward vs need"
 msgstr "आने वाला माल बनाम ज़रूरत"
 
-msgid "Cumulative fabric kg expected in-house over time against kg needed and the cut-start date"
+msgid ""
+"Cumulative fabric kg expected in-house over time against kg needed and the "
+"cut-start date"
 msgstr "समय के साथ आने वाला कुल फैब्रिक kg, ज़रूरत और कटिंग तारीख के सामने"
 
 msgid "Need"
@@ -351,12 +832,6 @@ msgstr "कटिंग शुरू"
 
 msgid "Fabric lots"
 msgstr "फैब्रिक लॉट"
-
-msgid "Lot"
-msgstr "लॉट"
-
-msgid "Dia"
-msgstr "डाया"
 
 msgid "Planned kg"
 msgstr "प्लान kg"
@@ -382,8 +857,11 @@ msgstr "नया लॉट"
 msgid "Add lot"
 msgstr "लॉट जोड़ें"
 
-msgid "Follow-ups"
-msgstr "फॉलो-अप"
+msgid "Fabric follow-ups"
+msgstr "फैब्रिक फॉलो-अप"
+
+msgid "Lots due within 3 days or overdue, grouped by the party holding them."
+msgstr "3 दिन में देय या देर वाले लॉट, जिस पार्टी के पास हैं उसके हिसाब से।"
 
 msgid "Cancel"
 msgstr "रद्द करें"
@@ -400,9 +878,6 @@ msgstr "बायर"
 msgid "Style"
 msgstr "स्टाइल"
 
-msgid "Pieces"
-msgstr "पीस"
-
 msgid "Delivery"
 msgstr "डिलीवरी"
 
@@ -414,12 +889,6 @@ msgstr "रिपीट"
 
 msgid "No orders yet."
 msgstr "अभी कोई ऑर्डर नहीं।"
-
-msgid "Fabric follow-ups"
-msgstr "फैब्रिक फॉलो-अप"
-
-msgid "due within 3 days or overdue"
-msgstr "3 दिन में देय या देर हो चुकी"
 
 msgid "Log in"
 msgstr "लॉग इन"
@@ -454,6 +923,7 @@ msgstr "कुल"
 msgid "Costed kg / pc"
 msgstr "कॉस्टेड kg / पीस"
 
+#, python-format
 msgid "Bundles (%(n)s pcs)"
 msgstr "बंडल (%(n)s पीस)"
 
@@ -475,18 +945,13 @@ msgstr "गेज"
 msgid "Table dia"
 msgstr "टेबल डाया"
 
-msgid "Width"
-msgstr "चौड़ाई"
-
 msgid "Not set"
 msgstr "सेट नहीं"
 
 msgid "Fabric needed"
 msgstr "ज़रूरी फैब्रिक"
 
-msgid "Trims"
-msgstr "ट्रिम्स"
-
+#, python-format
 msgid "required = qty × per piece × (1 + wastage %%)"
 msgstr "ज़रूरत = मात्रा × प्रति पीस × (1 + वेस्टेज %%)"
 
@@ -504,6 +969,9 @@ msgstr "सप्लायर"
 
 msgid "Required"
 msgstr "ज़रूरत"
+
+msgid "Size-wise tracker"
+msgstr "साइज़वार ट्रैकर"
 
 msgid "Amendments"
 msgstr "बदलाव"
@@ -544,152 +1012,97 @@ msgstr "यूनिट"
 msgid "Per piece"
 msgstr "प्रति पीस"
 
+#, python-format
 msgid "Wastage %%"
 msgstr "वेस्टेज %%"
 
 msgid "Size-wise"
 msgstr "साइज़ के हिसाब से"
 
-msgid "Cut lot"
-msgstr "कट लॉट"
-
-msgid "target"
-msgstr "लक्ष्य"
-
-msgid "width"
-msgstr "चौड़ाई"
-
-msgid "Roll"
-msgstr "रोल"
-
-msgid "Fabric lot"
-msgstr "फैब्रिक लॉट"
-
-msgid "Defect"
-msgstr "डिफेक्ट"
-
-msgid "kg returned"
-msgstr "वापस kg"
-
-msgid "Source"
-msgstr "स्रोत"
-
-msgid "manual"
-msgstr "मैनुअल"
-
-msgid "kg used"
-msgstr "इस्तेमाल kg"
-
-msgid "Costed kg for pieces cut"
-msgstr "कटे पीस का कॉस्टेड kg"
-
-msgid "Consumption"
-msgstr "खपत"
-
-msgid "green ≤ +2%% · amber +2–4%% · red > +4%%"
-msgstr "हरा ≤ +2%% · पीला +2–4%% · लाल > +4%%"
-
-msgid "Bundles"
-msgstr "बंडल"
-
-msgid "no overlaps allowed"
-msgstr "नंबर दोहराए नहीं जा सकते"
-
-msgid "Roll R-103 is outside GSM tolerance. It can still be used with a confirmation, and a flag goes to the knitting unit with machine no., kg rejected and rupee value. The ⌨ source becomes a scale or scanner later — same field."
-msgstr "रोल R-103 GSM सीमा से बाहर है। पुष्टि के बाद इस्तेमाल हो सकता है, और मशीन नं., रिजेक्ट kg व रुपये की कीमत के साथ निटिंग यूनिट को फ्लैग जाता है। ⌨ स्रोत बाद में स्केल या स्कैनर बनेगा — वही फ़ील्ड।"
-
-msgid "Output against target, defects, pipeline and alerts"
-msgstr "लक्ष्य के सामने उत्पादन, डिफेक्ट, पाइपलाइन और अलर्ट"
-
-msgid "Line 3 under 80%% of target for 3 hours"
-msgstr "लाइन 3 पिछले 3 घंटे से लक्ष्य के 80%% से कम"
-
-msgid "Open seam rising on"
-msgstr "ओपन सीम बढ़ रहा है:"
-
-msgid "Fabric lot late for cut-start"
-msgstr "फैब्रिक लॉट कटिंग के लिए देर से"
-
-msgid "Output by hour"
-msgstr "घंटेवार उत्पादन"
-
-msgid "Order pipeline"
-msgstr "ऑर्डर पाइपलाइन"
-
-msgid "pcs"
-msgstr "पीस"
-
-msgid "Top defects today"
-msgstr "आज के मुख्य डिफेक्ट"
-
-msgid "Open items"
-msgstr "बाकी काम"
-
-msgid "Open DCs"
-msgstr "खुले DC"
-
-msgid "Trims short"
-msgstr "ट्रिम्स कम"
-
-msgid "Defect rate"
-msgstr "डिफेक्ट दर"
-
 msgid "Hourly sewing"
 msgstr "घंटेवार सिलाई"
 
-msgid "One grid, every line. Keyed from supervisors' slips in under two minutes."
-msgstr "एक ग्रिड, सभी लाइनें। सुपरवाइज़र की पर्ची से दो मिनट में एंट्री।"
-
-msgid "Save hour"
-msgstr "घंटा सेव करें"
+msgid "Go"
+msgstr "जाएं"
 
 msgid "Line"
 msgstr "लाइन"
 
-msgid "Order"
-msgstr "ऑर्डर"
-
-msgid "Size"
-msgstr "साइज़"
-
-msgid "Target"
-msgstr "लक्ष्य"
-
 msgid "Efficiency"
 msgstr "एफिशिएंसी"
 
-msgid "Order, colour and size default from the line plan, so most lines need only the piece count. Later a bundle scan at end of line fills the same row."
-msgstr "ऑर्डर, रंग और साइज़ लाइन प्लान से अपने आप आते हैं, इसलिए ज़्यादातर लाइनों में सिर्फ़ पीस गिनती डालनी है। बाद में लाइन के अंत में बंडल स्कैन यही पंक्ति भरेगा।"
+msgid "No order on this line"
+msgstr "इस लाइन पर कोई ऑर्डर नहीं"
 
-msgid "Trims POs"
-msgstr "ट्रिम्स PO"
+#, python-format
+msgid "Save %(hour)s:00 hour"
+msgstr "%(hour)s:00 घंटा सेव करें"
 
-msgid "Calculated from the live colour × size grid. One PO per supplier, size-wise lines where needed."
-msgstr "रंग × साइज़ ग्रिड से गणना। हर सप्लायर का एक PO, ज़रूरत हो तो साइज़वार लाइन।"
-
-msgid "Raise all POs"
-msgstr "सभी PO बनाएं"
-
-msgid "No supplier"
-msgstr "सप्लायर नहीं"
-
-msgid "Draft"
-msgstr "ड्राफ्ट"
+msgid "Day so far"
+msgstr "आज अब तक"
 
 msgid "Buyer PO"
 msgstr "बायर PO"
 
-msgid "required by"
+msgid "Required by"
 msgstr "तक चाहिए"
 
-msgid "By size"
-msgstr "साइज़वार"
+msgid "Phone"
+msgstr "फ़ोन"
+
+msgid "Lines"
+msgstr "लाइनें"
+
+msgid "Ordered"
+msgstr "ऑर्डर किया"
+
+msgid "Short"
+msgstr "कम"
+
+msgid "Receive now"
+msgstr "अभी प्राप्त करें"
+
+msgid "Complete"
+msgstr "पूरा"
+
+msgid "Challan no."
+msgstr "चालान नं."
+
+msgid "Save receipt"
+msgstr "रसीद सेव करें"
+
+msgid "Receipts"
+msgstr "रसीदें"
+
+msgid "Challan"
+msgstr "चालान"
 
 msgid "Qty"
 msgstr "मात्रा"
 
-msgid "all sizes"
-msgstr "सभी साइज़"
+msgid "By"
+msgstr "द्वारा"
+
+msgid "Send to supplier"
+msgstr "सप्लायर को भेजें"
+
+#, python-format
+msgid "Raise POs for %(n)s line"
+msgid_plural "Raise POs for %(n)s lines"
+msgstr[0] "%(n)s लाइन के लिए PO बनाएं"
+msgstr[1] "%(n)s लाइनों के लिए PO बनाएं"
+
+msgid "On PO"
+msgstr "PO पर"
+
+msgid "To order"
+msgstr "ऑर्डर करना है"
+
+msgid "No trims on this style yet."
+msgstr "इस स्टाइल पर अभी ट्रिम्स नहीं।"
+
+msgid "No POs raised yet."
+msgstr "अभी कोई PO नहीं बना।"
 
 msgid "Colours"
 msgstr "रंग"
@@ -700,7 +1113,11 @@ msgstr "कॉमा से अलग करें, जैसे Navy, White"
 msgid "Order created. Enter quantities and consumption."
 msgstr "ऑर्डर बन गया। मात्रा और खपत डालें।"
 
-msgid "Quantities must be whole numbers and kg must be a number, neither negative."
+msgid "new"
+msgstr "नया"
+
+msgid ""
+"Quantities must be whole numbers and kg must be a number, neither negative."
 msgstr "मात्रा पूरी संख्या और kg संख्या होनी चाहिए, कोई भी नेगेटिव नहीं।"
 
 msgid "This order already has quantities. Give a reason for the amendment."
@@ -715,9 +1132,15 @@ msgstr "डाया प्रोग्राम और ट्रिम्स �
 msgid "Costing saved."
 msgstr "कॉस्टिंग सेव हो गई।"
 
-msgid "Repeat created from %(src)s: consumption, dia program, bundles and trims copied. Enter the new quantities."
-msgstr "%(src)s से रिपीट बना: खपत, डाया प्रोग्राम, बंडल और ट्रिम्स कॉपी हुए। नई मात्रा डालें।"
+#, python-format
+msgid ""
+"Repeat created from %(src)s: consumption, dia program, bundles and trims "
+"copied. Enter the new quantities."
+msgstr ""
+"%(src)s से रिपीट बना: खपत, डाया प्रोग्राम, बंडल और ट्रिम्स कॉपी हुए। नई "
+"मात्रा डालें।"
 
+#, python-format
 msgid "Repeat order from %(src)s"
 msgstr "%(src)s से रिपीट ऑर्डर"
 
@@ -727,6 +1150,7 @@ msgstr "लॉट जुड़ गया।"
 msgid "Stage updated."
 msgstr "स्टेज अपडेट हुआ।"
 
+#, python-format
 msgid "Hello %(name)s,"
 msgstr "नमस्ते %(name)s,"
 
@@ -736,56 +1160,127 @@ msgstr "टीम"
 msgid "Please confirm dispatch for:"
 msgstr "कृपया इनका डिस्पैच कन्फर्म करें:"
 
+#, python-format
 msgid "overdue since %(d)s"
 msgstr "%(d)s से देर"
 
+#, python-format
 msgid "due %(d)s"
 msgstr "%(d)s तक"
 
 msgid "lot"
 msgstr "लॉट"
 
-msgid "Thank you — SY Exports"
-msgstr "धन्यवाद — SY Exports"
+#~ msgid "Copy for WhatsApp"
+#~ msgstr "WhatsApp के लिए कॉपी करें"
 
-msgid "Needle line (major)"
-msgstr "नीडल लाइन (मेजर)"
+#~ msgid "Preview"
+#~ msgstr "प्रीव्यू"
 
-msgid "Cut"
-msgstr "कटा"
+#~ msgid "Trims PO"
+#~ msgstr "ट्रिम्स PO"
 
-msgid "Sewn"
-msgstr "सिला"
+#~ msgid "Hourly entry"
+#~ msgstr "घंटे की एंट्री"
 
-msgid "Passed"
-msgstr "पास"
+#~ msgid ""
+#~ "Preview of Milestone %(milestone)s — sample screen, nothing is saved yet"
+#~ msgstr ""
+#~ "माइलस्टोन %(milestone)s का प्रीव्यू — सैंपल स्क्रीन, अभी कुछ सेव नहीं होता"
 
-msgid "Packed"
-msgstr "पैक"
+#~ msgid "Follow-ups"
+#~ msgstr "फॉलो-अप"
 
-msgid "Open seam"
-msgstr "ओपन सीम"
+#~ msgid "due within 3 days or overdue"
+#~ msgstr "3 दिन में देय या देर हो चुकी"
 
-msgid "Skip stitch"
-msgstr "स्किप स्टिच"
+#~ msgid "target"
+#~ msgstr "लक्ष्य"
 
-msgid "Oil / stain"
-msgstr "तेल / दाग"
+#~ msgid "Source"
+#~ msgstr "स्रोत"
 
-msgid "Measurement"
-msgstr "नाप"
+#~ msgid "manual"
+#~ msgstr "मैनुअल"
 
-msgid "Admin"
-msgstr "एडमिन"
+#~ msgid "Costed kg for pieces cut"
+#~ msgstr "कटे पीस का कॉस्टेड kg"
 
-msgid "Data entry"
-msgstr "डेटा एंट्री"
+#~ msgid "green ≤ +2%% · amber +2–4%% · red > +4%%"
+#~ msgstr "हरा ≤ +2%% · पीला +2–4%% · लाल > +4%%"
 
-msgid "Fabric in-charge"
-msgstr "फैब्रिक इंचार्ज"
+#~ msgid "no overlaps allowed"
+#~ msgstr "नंबर दोहराए नहीं जा सकते"
 
-msgid "Cutting in-charge"
-msgstr "कटिंग इंचार्ज"
+#~ msgid ""
+#~ "Roll R-103 is outside GSM tolerance. It can still be used with a "
+#~ "confirmation, and a flag goes to the knitting unit with machine no., kg "
+#~ "rejected and rupee value. The manual source becomes a scale or scanner later"
+#~ " — same field."
+#~ msgstr ""
+#~ "रोल R-103 GSM सीमा से बाहर है। पुष्टि के बाद इस्तेमाल हो सकता है, और मशीन "
+#~ "नं., रिजेक्ट kg व रुपये की कीमत के साथ निटिंग यूनिट को फ्लैग जाता है। मैनुअल"
+#~ " स्रोत बाद में स्केल या स्कैनर बनेगा — वही फ़ील्ड।"
 
-msgid "Supervisor"
-msgstr "सुपरवाइज़र"
+#~ msgid "Output against target, defects, pipeline and alerts"
+#~ msgstr "लक्ष्य के सामने उत्पादन, डिफेक्ट, पाइपलाइन और अलर्ट"
+
+#~ msgid "Open seam rising on"
+#~ msgstr "ओपन सीम बढ़ रहा है:"
+
+#~ msgid "Fabric lot late for cut-start"
+#~ msgstr "फैब्रिक लॉट कटिंग के लिए देर से"
+
+#~ msgid "Order pipeline"
+#~ msgstr "ऑर्डर पाइपलाइन"
+
+#~ msgid "Open items"
+#~ msgstr "बाकी काम"
+
+#~ msgid "Open DCs"
+#~ msgstr "खुले DC"
+
+#~ msgid ""
+#~ "One grid, every line. Keyed from supervisors' slips in under two minutes."
+#~ msgstr "एक ग्रिड, सभी लाइनें। सुपरवाइज़र की पर्ची से दो मिनट में एंट्री।"
+
+#~ msgid ""
+#~ "Order, colour and size default from the line plan, so most lines need only "
+#~ "the piece count. Later a bundle scan at end of line fills the same row."
+#~ msgstr ""
+#~ "ऑर्डर, रंग और साइज़ लाइन प्लान से अपने आप आते हैं, इसलिए ज़्यादातर लाइनों "
+#~ "में सिर्फ़ पीस गिनती डालनी है। बाद में लाइन के अंत में बंडल स्कैन यही पंक्ति"
+#~ " भरेगा।"
+
+#~ msgid "Trims POs"
+#~ msgstr "ट्रिम्स PO"
+
+#~ msgid ""
+#~ "Calculated from the live colour × size grid. One PO per supplier, size-wise "
+#~ "lines where needed."
+#~ msgstr ""
+#~ "रंग × साइज़ ग्रिड से गणना। हर सप्लायर का एक PO, ज़रूरत हो तो साइज़वार लाइन।"
+
+#~ msgid "Raise all POs"
+#~ msgstr "सभी PO बनाएं"
+
+#~ msgid "Draft"
+#~ msgstr "ड्राफ्ट"
+
+#~ msgid "By size"
+#~ msgstr "साइज़वार"
+
+#~ msgid "all sizes"
+#~ msgstr "सभी साइज़"
+
+#~ msgid "Needle line (major)"
+#~ msgstr "नीडल लाइन (मेजर)"
+
+#~ msgid "Data entry"
+#~ msgstr "डेटा एंट्री"
+
+#~ msgid "Cutting in-charge"
+#~ msgstr "कटिंग इंचार्ज"
+
+#~ msgid "Supervisor"
+#~ msgstr "सुपरवाइज़र"

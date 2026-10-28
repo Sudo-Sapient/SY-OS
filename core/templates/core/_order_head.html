@@ -10,6 +10,6 @@
   {% if can_edit_orders %}<a href="{% url 'order_grid' order.pk %}" class="{% if request.resolver_match.url_name == 'order_grid' %}on{% endif %}">{% translate "Quantities & consumption" %}</a>
   <a href="{% url 'order_setup' order.pk %}" class="{% if request.resolver_match.url_name == 'order_setup' %}on{% endif %}">{% translate "Dia program & trims" %}</a>{% endif %}
   <a href="{% url 'fabric' order.pk %}" class="{% if request.resolver_match.url_name == 'fabric' %}on{% endif %}">{% translate "Fabric planning" %}</a>
-  {% if is_admin %}<a href="{% url 'costing' order.pk %}" class="admin {% if request.resolver_match.url_name == 'costing' %}on{% endif %}">🔒 {% translate "Costing" %}</a>{% endif %}
-  {% if can_edit_orders %}<a href="{% url 'order_repeat' order.pk %}" class="right">↻ {% translate "Repeat this style" %}</a>{% endif %}
+  {% if is_admin %}<a href="{% url 'costing' order.pk %}" class="{% if request.resolver_match.url_name == 'costing' %}on{% endif %}">{% translate "Costing" %} <span class="tag">{% translate "Admin" %}</span></a>{% endif %}
+  {% if can_edit_orders %}<a href="{% url 'order_repeat' order.pk %}" class="right">{% translate "Repeat this style" %}</a>{% endif %}
 </nav>

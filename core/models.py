@@ -1,8 +1,10 @@
 import math
+from collections import defaultdict
 from decimal import Decimal
 
 from django.conf import settings
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 SOURCES = [("manual", _("Manual")), ("scan", _("Scan")), ("device", _("Device"))]
@@ -137,7 +139,9 @@ class TrimLine(Stamped):
     per_piece = models.DecimalField(_("per piece"), max_digits=8, decimal_places=3, default=1)
     wastage_pct = models.DecimalField(_("wastage %"), max_digits=5, decimal_places=2, default=0)
     size_wise = models.BooleanField(_("size-wise"), default=False)
-    supplier = models.ForeignKey(Party, null=True, blank=True, on_delete=models.PROTECT, limit_choices_to={"kind": "trims"}, verbose_name=_("supplier"))
+    supplier = models.ForeignKey(
+        Party, null=True, blank=True, on_delete=models.PROTECT, limit_choices_to={"kind": "trims"}, verbose_name=_("supplier")
+    )
 
     class Meta:
         ordering = ["id"]
@@ -230,7 +234,10 @@ class FabricLot(Stamped):
         used = [s for s in STAGES if self.uses_washing or s[0] != "washing"]
         keys = [k for k, _l in used]
         at = keys.index(self.stage) if self.stage in keys else -1
-        return [(label, "done" if i < at or self.stage == "in_house" else "now" if i == at else "todo") for i, (_k, label) in enumerate(used)]
+        return [
+            (label, "done" if i < at or self.stage == "in_house" else "now" if i == at else "todo")
+            for i, (_k, label) in enumerate(used)
+        ]
 
 
 class LotStageUpdate(Stamped):
@@ -263,8 +270,284 @@ def fabric_window(order):
                 status, gap = "late", need - in_house - by_cut
             else:
                 status, gap = "short", need - in_house - by_cut - after_cut
-            rows.append({
-                "colour": colour, "dia": dia, "need": need, "in_house": in_house,
-                "by_cut": by_cut, "after_cut": after_cut, "status": status, "gap": gap, "lots": lots,
-            })
+            rows.append(
+                {
+                    "colour": colour,
+                    "dia": dia,
+                    "need": need,
+                    "in_house": in_house,
+                    "by_cut": by_cut,
+                    "after_cut": after_cut,
+                    "status": status,
+                    "gap": gap,
+                    "lots": lots,
+                }
+            )
+    return rows
+
+
+# ---------- Milestone 2: trims POs and inward ----------
+
+
+class TrimPO(Stamped):
+    po_no = models.CharField(_("PO no."), max_length=20, unique=True)
+    order = models.ForeignKey(Order, on_delete=models.PROTECT, related_name="trim_pos")
+    supplier = models.ForeignKey(Party, on_delete=models.PROTECT, verbose_name=_("supplier"))
+    required_by = models.DateField(_("required by"))
+
+    class Meta:
+        ordering = ["-created_at", "po_no"]
+
+    def __str__(self):
+        return self.po_no
+
+    @property
+    def status(self):
+        lines = list(self.lines.all())
+        got = sum(l.received for l in lines)
+        if got and all(l.received >= l.qty for l in lines):
+            return "received"
+        if got:
+            return "partial"
+        return "overdue" if self.required_by < timezone.localdate() else "on_order"
+
+
+class TrimPOLine(Stamped):
+    po = models.ForeignKey(TrimPO, on_delete=models.PROTECT, related_name="lines")
+    trim = models.ForeignKey(TrimLine, on_delete=models.PROTECT, related_name="po_lines")
+    size = models.CharField(_("size"), max_length=10, blank=True)
+    qty = models.PositiveIntegerField(_("quantity"))
+
+    class Meta:
+        ordering = ["id"]
+
+    @property
+    def received(self):
+        return sum(r.qty for r in self.receipts.all())
+
+    @property
+    def short(self):
+        return max(self.qty - self.received, 0)
+
+
+class TrimReceipt(Stamped):
+    line = models.ForeignKey(TrimPOLine, on_delete=models.PROTECT, related_name="receipts")
+    qty = models.PositiveIntegerField(_("quantity"))
+    challan = models.CharField(_("challan no."), max_length=30)
+    date = models.DateField(_("date"))
+
+
+# ---------- Milestone 3: cutting ----------
+
+# Defect at the lay → the vertical that caused it (Party.kind).
+FABRIC_DEFECTS = [
+    ("neps", _("Neps / slubs / contamination"), "mill"),
+    ("holes", _("Holes / drop stitch / needle lines"), "knit"),
+    ("shade", _("Shade variation / dye spots"), "dye"),
+    ("chemical", _("Chemical or softener spots"), "wash"),
+    ("dimension", _("GSM / width off / spirality"), "compact"),
+]
+DEFECT_VERTICAL = {k: v for k, _l, v in FABRIC_DEFECTS}
+LEVELS = [("minor", _("Minor")), ("major", _("Major")), ("critical", _("Critical"))]
+
+
+class CutLot(Stamped):
+    cut_no = models.CharField(_("cut lot no."), max_length=20, unique=True)
+    order = models.ForeignKey(Order, on_delete=models.PROTECT, related_name="cut_lots")
+    colour = models.CharField(_("colour"), max_length=40)
+    dia_line = models.ForeignKey(DiaLine, on_delete=models.PROTECT, verbose_name=_("dia line"))
+    date = models.DateField(_("date"))
+
+    class Meta:
+        ordering = ["-date", "-id"]
+
+    def __str__(self):
+        return self.cut_no
+
+    @property
+    def kg_used(self):
+        return sum((r.kg - r.kg_returned for r in self.rolls.all()), Decimal(0))
+
+    @property
+    def kg_costed(self):
+        kg = {l.size: l.costed_kg for l in self.order.lines.filter(colour=self.colour)}
+        return sum((s.pieces * kg.get(s.size, 0) for s in self.sizes.all()), Decimal(0))
+
+    @property
+    def consumption_pct(self):
+        costed = self.kg_costed
+        return (self.kg_used - costed) / costed * 100 if costed else Decimal(0)
+
+    @property
+    def consumption_status(self):
+        return consumption_status(self.consumption_pct)
+
+    @property
+    def pieces(self):
+        return sum(s.pieces for s in self.sizes.all())
+
+
+def consumption_status(pct):
+    """green ≤ +2%, amber +2–4%, red > +4% (brief starting values)."""
+    return "ok" if pct <= 2 else "warn" if pct <= 4 else "bad"
+
+
+class RollLaid(Stamped):
+    cut_lot = models.ForeignKey(CutLot, on_delete=models.PROTECT, related_name="rolls")
+    fabric_lot = models.ForeignKey(FabricLot, on_delete=models.PROTECT, related_name="rolls", verbose_name=_("fabric lot"))
+    roll_no = models.CharField(_("roll no."), max_length=20)
+    kg = models.DecimalField(_("kg"), max_digits=7, decimal_places=2)
+    gsm = models.PositiveIntegerField(_("GSM"))
+    width = models.DecimalField(_("width (in)"), max_digits=5, decimal_places=1)
+    defect = models.CharField(_("defect"), max_length=12, choices=[(k, l) for k, l, _v in FABRIC_DEFECTS], blank=True)
+    level = models.CharField(_("level"), max_length=10, choices=LEVELS, blank=True)
+    kg_rejected = models.DecimalField(_("kg rejected"), max_digits=7, decimal_places=2, default=0)
+    kg_returned = models.DecimalField(_("kg returned"), max_digits=7, decimal_places=2, default=0)
+
+    class Meta:
+        ordering = ["id"]
+
+    @property
+    def vertical(self):
+        return dict(Party.KINDS).get(DEFECT_VERTICAL.get(self.defect))
+
+    @property
+    def made_by(self):
+        """The stage update that made this fabric — the party and machine/batch the flag goes to."""
+        stage = {"mill": "yarn_in", "knit": "knitting", "dye": "dyeing", "wash": "washing", "compact": "compacting"}.get(
+            DEFECT_VERTICAL.get(self.defect)
+        )
+        return self.fabric_lot.updates.filter(stage=stage).select_related("party").last() if stage else None
+
+    @property
+    def rupees(self):
+        """kg rejected × fabric cost per kg (yarn + knitting + dyeing). Admin only — it reveals costing."""
+        c = Costing.objects.filter(order=self.fabric_lot.order).first()
+        return self.kg_rejected * (c.yarn_per_kg + c.knitting_per_kg + c.dyeing_per_kg) if c else None
+
+
+class CutSize(Stamped):
+    cut_lot = models.ForeignKey(CutLot, on_delete=models.PROTECT, related_name="sizes")
+    size = models.CharField(_("size"), max_length=10)
+    pieces = models.PositiveIntegerField(_("pieces"))
+    bundle_from = models.PositiveIntegerField()
+    bundle_to = models.PositiveIntegerField()
+
+    class Meta:
+        ordering = ["id"]
+
+
+def lot_balance(lot):
+    """kg in hand = in-house kg − kg taken by cutting (laid − returned)."""
+    used = sum((r.kg - r.kg_returned for r in lot.rolls.all()), Decimal(0))
+    return lot.in_house_kg - used
+
+
+# ---------- Milestone 4: sewing, checking, packing ----------
+
+
+class Line(Stamped):
+    name = models.CharField(_("line"), max_length=10, unique=True)
+    operators = models.PositiveIntegerField(_("operators"), default=20)
+    order = models.ForeignKey(Order, null=True, blank=True, on_delete=models.PROTECT, verbose_name=_("order"))
+    colour = models.CharField(_("colour"), max_length=40, blank=True)
+    size = models.CharField(_("size"), max_length=10, blank=True)
+    target_per_hour = models.PositiveIntegerField(_("target / hour"), default=40)
+
+    class Meta:
+        ordering = ["name"]
+
+    def __str__(self):
+        return self.name
+
+
+class SewingEntry(Stamped):
+    date = models.DateField(_("date"))
+    hour = models.PositiveSmallIntegerField(_("hour"))
+    line = models.ForeignKey(Line, on_delete=models.PROTECT, related_name="entries")
+    order = models.ForeignKey(Order, on_delete=models.PROTECT)
+    colour = models.CharField(_("colour"), max_length=40)
+    size = models.CharField(_("size"), max_length=10)
+    pieces = models.PositiveIntegerField(_("pieces"))
+
+    class Meta:
+        unique_together = [("date", "hour", "line")]
+
+
+CHECK_DEFECTS = [
+    ("open_seam", _("Open seam")),
+    ("skip_stitch", _("Skip stitch")),
+    ("uncut_thread", _("Uncut thread")),
+    ("oil_stain", _("Oil / stain")),
+    ("measurement", _("Measurement")),
+    ("shade", _("Shade variation")),
+    ("hole", _("Hole / damage")),
+    ("label", _("Label wrong")),
+]
+
+
+class CheckingEntry(Stamped):
+    date = models.DateField(_("date"))
+    hour = models.PositiveSmallIntegerField(_("hour"))
+    order = models.ForeignKey(Order, on_delete=models.PROTECT)
+    colour = models.CharField(_("colour"), max_length=40)
+    size = models.CharField(_("size"), max_length=10)
+    checked = models.PositiveIntegerField(_("checked"))
+    rework = models.PositiveIntegerField(_("rework"), default=0)
+    reject = models.PositiveIntegerField(_("reject"), default=0)
+    rework_ok = models.PositiveIntegerField(_("rework OK'd"), default=0)
+    defect = models.CharField(_("main defect"), max_length=16, choices=CHECK_DEFECTS, blank=True)
+
+    @property
+    def passed(self):
+        return self.checked - self.rework - self.reject + self.rework_ok
+
+
+class PackingEntry(Stamped):
+    date = models.DateField(_("date"))
+    order = models.ForeignKey(Order, on_delete=models.PROTECT)
+    colour = models.CharField(_("colour"), max_length=40)
+    size = models.CharField(_("size"), max_length=10)
+    pieces = models.PositiveIntegerField(_("pieces"))
+    cartons = models.CharField(_("carton nos."), max_length=60)
+
+
+def tracker(order):
+    """Size-wise tracker: per colour × size, how far each piece has got."""
+
+    def sums(qs, field):
+        out = defaultdict(int)
+        for row in qs.values("colour", "size").annotate(t=models.Sum(field)):
+            out[row["colour"], row["size"]] = row["t"] or 0
+        return out
+
+    cut = defaultdict(int)
+    for s in CutSize.objects.filter(cut_lot__order=order).select_related("cut_lot"):
+        cut[s.cut_lot.colour, s.size] += s.pieces
+    sewn = sums(SewingEntry.objects.filter(order=order), "pieces")
+    chk = CheckingEntry.objects.filter(order=order)
+    checked = sums(chk, "checked")
+    passed = defaultdict(int)
+    rework_open = defaultdict(int)
+    for e in chk:
+        passed[e.colour, e.size] += e.passed
+        rework_open[e.colour, e.size] += e.rework - e.rework_ok
+    packed = sums(PackingEntry.objects.filter(order=order), "pieces")
+    rows = []
+    for l in order.lines.order_by("id"):
+        k = (l.colour, l.size)
+        rows.append(
+            {
+                "colour": l.colour,
+                "size": l.size,
+                "qty": l.qty,
+                "cut": cut[k],
+                "sewn": sewn[k],
+                "checked": checked[k],
+                "passed": passed[k],
+                "rework": rework_open[k],
+                "packed": packed[k],
+                "balance": l.qty - packed[k],
+            }
+        )
     return rows

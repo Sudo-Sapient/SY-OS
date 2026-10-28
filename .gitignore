@@ -1,5 +1,12 @@
 .venv/
 __pycache__/
 *.pyc
-/staticfiles/
+/staticfiles/*
+!/staticfiles/.gitkeep
 .DS_Store
+.env
+.playwright-mcp/
+.shots-tmp/
+.impeccable-tmp/
+.vercel
+node_modules/

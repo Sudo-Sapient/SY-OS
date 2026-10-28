@@ -1,0 +1,6 @@
+docs/
+stickers/
+.venv/
+.playwright-mcp/
+**/__pycache__/
+*.pyc

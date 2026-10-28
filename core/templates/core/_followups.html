@@ -1,9 +1,26 @@
-{% load i18n %}<div class="cards">
+{% load i18n %}<div class="fu-list">
 {% for f in followups %}
-  <div class="card msg">
-    <div class="row"><b>{{ f.party|default:_("No party yet") }}</b>{% if f.party.phone %}<span class="muted">{{ f.party.phone }}</span>{% endif %}</div>
-    <pre>{{ f.message }}</pre>
-    <button class="btn ghost small" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='{% translate "Copied" %} ✓'">{% translate "Copy for WhatsApp" %}</button>
-  </div>
+  <article class="fu">
+    <header class="fu-head">
+      <div><b>{{ f.party|default:_("No party yet") }}</b>{% if f.party %}<span class="muted"> · {{ f.party.get_kind_display }}</span>{% endif %}</div>
+      {% if f.party.phone %}<a class="fu-phone" href="tel:{{ f.party.phone|cut:' ' }}">{{ f.party.phone }}</a>{% endif %}
+    </header>
+    <table class="fu-lots">
+      <tbody>{% for lot, last in f.items %}
+        <tr>
+          <td class="fu-lot">{{ lot.lot_no }}</td>
+          <td>{{ lot.order.order_no }}</td>
+          <td>{{ lot.colour }}</td>
+          <td class="num">{{ lot.dia_line.table_dia|floatformat:"-1" }}"</td>
+          <td class="num">{{ lot.planned_kg|floatformat:0 }} kg</td>
+          <td class="fu-when">{% if lot.expected_date < today %}<span class="pill bad">{% translate "Overdue" %} · {{ lot.expected_date|date:"d M" }}</span>{% else %}<span class="pill warn">{% translate "Due" %} {{ lot.expected_date|date:"d M" }}</span>{% endif %}</td>
+        </tr>{% endfor %}
+      </tbody>
+    </table>
+    <footer class="fu-foot">
+      <button type="button" class="btn ghost small" data-msg="{{ f.message }}" data-done="{% translate 'Copied' %}" onclick="navigator.clipboard.writeText(this.dataset.msg);this.textContent=this.dataset.done">{% translate "Copy WhatsApp message" %}</button>
+      <details><summary>{% translate "Preview message" %}</summary><p class="fu-msg">{{ f.message|linebreaksbr }}</p></details>
+    </footer>
+  </article>
 {% endfor %}
 </div>

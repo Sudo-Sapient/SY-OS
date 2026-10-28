@@ -4,37 +4,48 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% block title %}SY OS{% endblock %} · SY OS</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'core/app.css' %}">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230a0a0a'/%3E%3Cpath d='M5.5 6.5 8.75 11.5 12 6.5 15.25 11.5 18.5 6.5M5.5 12.5 8.75 17.5 12 12.5 15.25 17.5 18.5 12.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 </head>
 <body>
 {% if user.is_authenticated %}
 <header class="top">
-  <a class="brand" href="{% url 'home' %}"><span class="mark">SY</span> OS</a>
-  <nav>
-    <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}on{% endif %}">{% translate "Orders" %}</a>
-    <span class="sep">{% translate "Preview" %}</span>
-    <a href="{% url 'preview_trims' %}" class="{% if request.resolver_match.url_name == 'preview_trims' %}on{% endif %}">{% translate "Trims PO" %}</a>
-    <a href="{% url 'preview_cutting' %}" class="{% if request.resolver_match.url_name == 'preview_cutting' %}on{% endif %}">{% translate "Cutting" %}</a>
-    <a href="{% url 'preview_sewing' %}" class="{% if request.resolver_match.url_name == 'preview_sewing' %}on{% endif %}">{% translate "Hourly entry" %}</a>
-    <a href="{% url 'preview_dashboard' %}" class="{% if request.resolver_match.url_name == 'preview_dashboard' %}on{% endif %}">{% translate "Dashboard" %}</a>
+  <a class="brand" href="{% url 'home' %}" aria-label="SY OS">{% include "core/_logo.html" %}</a>
+  <nav aria-label="{% translate 'Main' %}">
+    {% with n=request.resolver_match.url_name %}
+    <a href="{% url 'home' %}" class="{% if n == 'home' or n|slice:':5' == 'order' or n == 'fabric' or n == 'costing' %}on{% endif %}">{% translate "Orders" %}</a>
+    <a href="{% url 'trims' %}" class="{% if n == 'trims' or n == 'trim_po' %}on{% endif %}">{% translate "Trims" %}</a>
+    <a href="{% url 'cutting' %}" class="{% if n == 'cutting' or n == 'cut_new' %}on{% endif %}">{% translate "Cutting" %}</a>
+    <a href="{% url 'sewing' %}" class="{% if n == 'sewing' %}on{% endif %}">{% translate "Sewing" %}</a>
+    <a href="{% url 'checking' %}" class="{% if n == 'checking' %}on{% endif %}">{% translate "Checking & packing" %}</a>
+    <a href="{% url 'dashboard' %}" class="{% if n == 'dashboard' %}on{% endif %}">{% translate "Dashboard" %}</a>
+    {% endwith %}
   </nav>
   <div class="who">
     <form action="{% url 'set_language' %}" method="post" class="lang">{% csrf_token %}
       <input name="next" type="hidden" value="{{ request.get_full_path }}">
       {% get_available_languages as LANGS %}{% get_language_info_list for LANGS as langs %}
-      {% for l in langs %}<button name="language" value="{{ l.code }}" class="{% if l.code == LANG %}on{% endif %}">{{ l.name_local }}</button>{% endfor %}
+      {% for l in langs %}<button name="language" value="{{ l.code }}" class="{% if l.code == LANG %}on{% endif %}" lang="{{ l.code }}">{{ l.name_local }}</button>{% endfor %}
     </form>
-    <span class="user">{{ user.get_full_name|default:user.username }} <small>{% translate user_role %}</small></span>
-    <form action="{% url 'logout' %}" method="post">{% csrf_token %}<button class="link">{% translate "Log out" %}</button></form>
+    {% with name=user.get_full_name|default:user.username %}
+    <div class="account">
+      <span class="avatar" aria-hidden="true">{{ name|first|upper }}</span>
+      <span class="user">{{ name }}<small>{% translate user_role %}</small></span>
+      <form action="{% url 'logout' %}" method="post">{% csrf_token %}<button class="link">{% translate "Log out" %}</button></form>
+    </div>
+    {% endwith %}
   </div>
 </header>
 {% endif %}
-{% if milestone %}<div class="preview-bar">{% blocktranslate %}Preview of Milestone {{ milestone }} — sample screen, nothing is saved yet{% endblocktranslate %}</div>{% endif %}
 <main>
-  {% for m in messages %}<div class="flash">{{ m }}</div>{% endfor %}
+  {% for m in messages %}<div class="flash" role="status">{{ m }}</div>{% endfor %}
   {% block content %}{% endblock %}
 </main>
+<script>
+// On narrow screens the nav scrolls sideways; bring the current page's tab into view.
+document.querySelector('.top nav a.on')?.scrollIntoView({ block: 'nearest', inline: 'center' })
+</script>
 {% block scripts %}{% endblock %}
 </body>
 </html>

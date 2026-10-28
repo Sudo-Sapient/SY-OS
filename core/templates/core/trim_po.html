@@ -1,0 +1,42 @@
+{% extends "core/base.html" %}{% load i18n humanize %}
+{% block title %}{{ po.po_no }}{% endblock %}
+{% block content %}
+<p class="crumb"><a href="{% url 'trims' %}">{% translate "Trims" %}</a> / {{ po.po_no }}</p>
+<div class="head"><h1>{{ po.po_no }} · {{ po.supplier }}</h1>{% include "core/_po_status.html" with s=po.status %}</div>
+<dl class="facts">
+  <div><dt>{% translate "Order" %}</dt><dd><a href="{% url 'order_detail' po.order.pk %}">{{ po.order.order_no }}</a></dd></div>
+  <div><dt>{% translate "Buyer PO" %}</dt><dd>{{ po.order.buyer_po }}</dd></div>
+  <div><dt>{% translate "Style" %}</dt><dd>{{ po.order.style }}</dd></div>
+  <div><dt>{% translate "Required by" %}</dt><dd>{{ po.required_by|date:"d M Y" }}</dd></div>
+  <div><dt>{% translate "Phone" %}</dt><dd>{{ po.supplier.phone|default:"—" }}</dd></div>
+</dl>
+{% for e in errors %}<div class="flash err">{{ e }}</div>{% endfor %}
+<form method="post">{% csrf_token %}
+<h2>{% translate "Lines" %}</h2>
+<div class="tbl-scroll"><table class="tbl entry">
+  <thead><tr><th>{% translate "Item" %}</th><th>{% translate "Size" %}</th><th class="num">{% translate "Ordered" %}</th><th class="num">{% translate "Received" %}</th><th class="num">{% translate "Short" %}</th>{% if can_edit_orders %}<th>{% translate "Receive now" %}</th>{% endif %}</tr></thead>
+  <tbody>{% for l in lines %}<tr><td>{{ l.trim.item }}</td><td>{{ l.size|default:"—" }}</td><td class="num">{{ l.qty|intcomma }} {{ l.trim.unit }}</td><td class="num">{{ l.received|intcomma }}</td><td class="num">{% if l.short %}<b class="warn">{{ l.short|intcomma }}</b>{% else %}<span class="ok">{% translate "Complete" %}</span>{% endif %}</td>{% if can_edit_orders %}<td>{% if l.short %}<input name="q-{{ l.id }}" inputmode="numeric" placeholder="{{ l.short }}">{% endif %}</td>{% endif %}</tr>{% endfor %}</tbody>
+</table></div>
+{% if can_edit_orders and po.status != "received" %}
+<div class="inline-form">
+  <label>{% translate "Challan no." %}<input name="challan" required></label>
+  <label>{% translate "Date" %}<input type="date" name="date" value="{{ today|date:'Y-m-d' }}"></label>
+  <button class="btn">{% translate "Save receipt" %}</button>
+</div>
+{% endif %}
+</form>
+<div class="two">
+<div>
+<h2>{% translate "Receipts" %}</h2>
+<div class="tbl-scroll"><table class="tbl">
+  <thead><tr><th>{% translate "Date" %}</th><th>{% translate "Challan" %}</th><th>{% translate "Item" %}</th><th class="num">{% translate "Qty" %}</th><th>{% translate "By" %}</th></tr></thead>
+  <tbody>{% for l in lines %}{% for r in l.receipts.all %}<tr><td>{{ r.date|date:"d M" }}</td><td>{{ r.challan }}</td><td>{{ l.trim.item }}{% if l.size %} {{ l.size }}{% endif %}</td><td class="num">{{ r.qty|intcomma }}</td><td class="muted">{{ r.created_by }}</td></tr>{% endfor %}{% endfor %}</tbody>
+</table></div>
+</div>
+<div>
+<h2>{% translate "Send to supplier" %}</h2>
+<div class="card"><p class="fu-msg" style="margin:0 0 12px">{{ message|linebreaksbr }}</p>
+<button type="button" class="btn ghost small" data-msg="{{ message }}" data-done="{% translate 'Copied' %}" onclick="navigator.clipboard.writeText(this.dataset.msg);this.textContent=this.dataset.done">{% translate "Copy WhatsApp message" %}</button></div>
+</div>
+</div>
+{% endblock %}

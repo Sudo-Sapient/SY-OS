@@ -1,0 +1,103 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#171717;--muted:#737373;--line:#e5e5e5;--brand:#2563eb;--soft:#eff4ff;--warn:#a5640a;--bad:#b3261e;--bg:#fff}
+body{font-family:Inter,sans-serif;margin:0;background:#f0f0f0;color:var(--ink)}
+.d{background:#fff;width:1200px;padding:36px 40px;margin:0 0 30px;box-sizing:border-box}
+h3{margin:0 0 22px;font-size:22px;font-weight:500;letter-spacing:-.02em}
+.flow{display:flex;align-items:stretch;gap:0}
+.box{flex:1;border:1px solid var(--line);border-radius:12px;padding:14px 12px;text-align:center;background:#fff;position:relative}
+.box b{display:block;font-weight:600;font-size:15px;margin-bottom:4px}.box small{color:var(--muted);font-size:12.5px;line-height:1.35;display:block}
+.arrow{width:28px;display:flex;align-items:center;justify-content:center;color:#9aa1a8;font-size:20px}
+.m{display:inline-block;font-size:11px;font-weight:600;border-radius:9999px;padding:2px 9px;margin-bottom:8px;background:#fff;border:1px solid var(--line)}
+.m1{color:#2563eb}.m2{color:#ea580c}.m3{color:#7c3aed}.m4{color:#16a34a}
+.box.m1b{}
+.legend{margin-top:18px;font-size:13px;color:var(--muted)}
+/* fabric */
+.fab .box{padding:12px 6px}.fab .lay{border-color:var(--brand);background:var(--soft)}
+.fb{position:relative;height:70px;margin:0 3%}
+.fb svg{position:absolute;inset:0;width:100%;height:100%}
+.cap{text-align:center;font-size:13px;color:var(--muted);margin-top:4px}
+/* timeline */
+.tl{display:grid;grid-template-columns:190px 1fr;row-gap:12px;align-items:center}
+.tl .lab b{display:block;font-size:14px}.tl .lab small{color:var(--muted)}
+.track{position:relative;height:38px;background:repeating-linear-gradient(90deg,#f5f5f5 0,#f5f5f5 1px,transparent 1px,transparent 5.555%)}
+.bar{position:absolute;top:4px;height:30px;border-radius:9999px;color:#fff;font-size:12.5px;font-weight:600;display:flex;align-items:center;padding:0 10px;white-space:nowrap}
+.bar i{position:absolute;inset:0;border-radius:6px;opacity:.35}
+.weeks{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:6px}
+/* contract */
+.contract{display:grid;grid-template-columns:1fr 70px 1.1fr 70px 1fr;align-items:center}
+.col{display:grid;gap:10px}.src{border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:14px}
+.src.now{border-color:var(--brand);background:var(--soft)}.src small{display:block;color:var(--muted);font-size:12px}
+.field{border:1px solid var(--ink);border-radius:16px;box-shadow:rgba(0,0,0,.06) 0 0 0 4px;padding:18px;font-family:ui-monospace,monospace;font-size:13px;line-height:1.7}
+.field b{font-family:"Noto Sans";font-size:15px;display:block;margin-bottom:6px}
+.big{font-size:28px;color:#9aa1a8;text-align:center}
+/* arch */
+.arch{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:24px;align-items:center}
+.zone{border:1px dashed #d4d4d4;border-radius:12px;padding:16px}
+.zone h4{margin:0 0 10px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.dev{border:1px solid var(--line);border-radius:9999px;padding:8px 12px;margin:6px 0;font-size:14px;background:#fff}
+.dev small{color:var(--muted)}
+.server{border:1px solid var(--brand);background:#fff;box-shadow:rgba(37,99,235,.1) 0 0 0 4px;border-radius:16px;padding:18px;text-align:center}
+.server b{font-size:16px}.server div{font-size:13px;color:#36404c;margin-top:4px}
+</style></head><body>
+
+<div class="d" id="pipeline"><h3>One connected record — from buyer PO to packed carton</h3>
+<div class="flow">
+ <div class="box m1b"><span class="m m1">M1</span><b>Master order</b><small>PO → style → colour × size, bundles, consumption, dia, costing</small></div><div class="arrow">→</div>
+ <div class="box m1b"><span class="m m1">M1</span><b>Fabric planning</b><small>lots by stage, in-house before cut-start?</small></div><div class="arrow">→</div>
+ <div class="box"><span class="m m2">M2</span><b>Inward & trims</b><small>fabric inward, trims calculator, supplier POs, stock</small></div><div class="arrow">→</div>
+ <div class="box"><span class="m m3">M3</span><b>Cutting</b><small>rolls, GSM, defects, consumption, bundles</small></div><div class="arrow">→</div>
+ <div class="box"><span class="m m4">M4</span><b>Sewing · checking · packing</b><small>hourly grids, internal DCs, dashboard, alerts</small></div><div class="arrow">→</div>
+ <div class="box"><b>Packed carton</b><small>size-wise tracker closes the order</small></div>
+</div>
+<p class="legend">Every screen reads from the master order. All four milestones already work in the demo, on sample data.</p></div>
+
+<div class="d fab" id="fabric"><h3>Fabric flow — every mistake found at the lay goes back to its source</h3>
+<div class="flow">
+ <div class="box"><b>Yarn mill</b><small>count, yarn lot</small></div><div class="arrow">→</div>
+ <div class="box"><b>Knitting</b><small>machine, dia, gauge</small></div><div class="arrow">→</div>
+ <div class="box"><b>Dyeing</b><small>batch, shade</small></div><div class="arrow">→</div>
+ <div class="box"><b>Washing</b><small>optional</small></div><div class="arrow">→</div>
+ <div class="box"><b>Compacting</b><small>GSM, width</small></div><div class="arrow">→</div>
+ <div class="box"><b>Fabric store</b><small>lot kg in hand</small></div><div class="arrow">→</div>
+ <div class="box lay"><b>Lay / cutting</b><small>roll kg, GSM, width, defects</small></div>
+</div>
+<div class="fb"><svg viewBox="0 0 1000 70" preserveAspectRatio="none"><g fill="none" stroke="#ea580c" stroke-width="2.5">
+<path d="M935 0 V50 H52 V6"/><path d="M200 50 V6"/><path d="M347 50 V6"/><path d="M494 50 V6"/><path d="M640 50 V6"/></g>
+<g fill="#ea580c"><path d="M46 10 L52 0 L58 10Z"/><path d="M194 10 L200 0 L206 10Z"/><path d="M341 10 L347 0 L353 10Z"/><path d="M488 10 L494 0 L500 10Z"/><path d="M634 10 L640 0 L646 10Z"/></g></svg></div>
+<p class="cap">Defect flags carry roll, lot, machine or batch, level, kg rejected and rupee value — routed to the vertical that caused them.</p></div>
+
+<div class="d" id="timeline"><h3>Milestones — each paid on acceptance, tested on your floor</h3>
+<div class="tl">
+ <div class="lab"><b>1 · Trial (paid)</b><small>Master order + fabric planning</small></div>
+ <div class="track"><div class="bar" style="left:0;width:33.3%;background:#2563eb">4–6 weeks</div></div>
+ <div class="lab"><b>2 · Inward & trims</b><small>Calculator, POs, stock</small></div>
+ <div class="track"><div class="bar" style="left:33.3%;width:22.2%;background:#ea580c">3–4 weeks</div></div>
+ <div class="lab"><b>3 · Cutting</b><small>Rolls, GSM, defects, bundles</small></div>
+ <div class="track"><div class="bar" style="left:55.5%;width:22.2%;background:#7c3aed">3–4 weeks</div></div>
+ <div class="lab"><b>4 · Floor & go-live</b><small>Hourly entry, DCs, dashboard</small></div>
+ <div class="track"><div class="bar" style="left:77.7%;width:22.3%;background:#16a34a">3–4 weeks · pilot on 2–3 live orders</div></div>
+ <div></div><div class="weeks"><span>Week 0</span><span>6</span><span>10</span><span>14</span><span>18</span></div>
+</div>
+<p class="legend">13–18 weeks in total. After Milestone 1 you decide whether to continue.</p></div>
+
+<div class="d" id="contract"><h3>Built to automate later — one field, many sources</h3>
+<div class="contract">
+ <div class="col"><div class="src now"><b>⌨ Keyboard</b><small>Phase 1 — data entry from slips</small></div><div class="src">▦ Barcode / QR scanner<small>bundles, rolls, cartons</small></div><div class="src">⚖ Connected scale<small>roll kg at inward and lay</small></div><div class="src">◎ GSM cutter + balance<small>GSM at the lay</small></div></div>
+ <div class="big">→</div>
+ <div class="field"><b>Same field, same record</b>value: 21.4 kg<br>source: manual | scan | device<br>entered_by: Selvam<br>entered_at: 28 Oct 10:42<br>roll / bundle / carton id</div>
+ <div class="big">→</div>
+ <div class="col"><div class="src">Consumption check</div><div class="src">Lot balance</div><div class="src">Size-wise tracker</div><div class="src">Dashboard & alerts → AI brief later</div></div>
+</div>
+<p class="legend">Screens and data don't change when a device arrives — only the source does.</p></div>
+
+<div class="d" id="arch"><h3>Runs inside the factory, works without internet</h3>
+<div class="arch">
+ <div class="zone"><h4>Factory floor (LAN / Wi-Fi)</h4>
+  <div class="dev">Office PC <small>· data entry</small></div><div class="dev">Tablet <small>· cutting table</small></div><div class="dev">PC / tablet <small>· fabric store</small></div><div class="dev">Floor TV <small>· line boards (view only)</small></div></div>
+ <div class="server"><b>SY OS server (on-prem)</b><div>Django + PostgreSQL</div><div>Role-based login · full audit</div><div>English · हिन्दी · தமிழ்</div><div>Documented API</div></div>
+ <div class="zone"><h4>Outside</h4>
+  <div class="dev">Owner phone / laptop <small>· secure VPN</small></div><div class="dev">Nightly encrypted backup <small>· your cloud account, tested restore</small></div><div class="dev">Git repo <small>· your company account</small></div></div>
+</div></div>
+</body></html>

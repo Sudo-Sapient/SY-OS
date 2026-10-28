@@ -1,0 +1,40 @@
+{% extends "core/base.html" %}{% load i18n %}
+{% block title %}{% translate "Sewing" %}{% endblock %}
+{% block content %}
+<div class="head"><h1>{% translate "Hourly sewing" %}</h1>
+  <form method="get" class="inline-form tight">
+    <input type="date" name="date" value="{{ day }}" aria-label="{% translate 'Date' %}">
+    <select name="hour" aria-label="{% translate 'Hour' %}" onchange="this.form.submit()">{% for h in hours %}<option value="{{ h }}" {% if h == hour %}selected{% endif %}>{{ h }}:00–{{ h|add:1 }}:00</option>{% endfor %}</select>
+    <button class="btn ghost">{% translate "Go" %}</button>
+  </form>
+</div>
+{% for e in errors %}<div class="flash err">{{ e }}</div>{% endfor %}
+<form method="post">{% csrf_token %}
+<input type="hidden" name="date" value="{{ day }}"><input type="hidden" name="hour" value="{{ hour }}">
+<div class="tbl-scroll stack-m"><table class="tbl entry">
+  <thead><tr><th>{% translate "Line" %}</th><th>{% translate "Order" %}</th><th>{% translate "Colour" %}</th><th>{% translate "Size" %}</th><th>{% translate "Pieces" %}</th><th class="num">{% translate "Target" %}</th><th>{% translate "Efficiency" %}</th></tr></thead>
+  <tbody>{% for r in rows %}<tr>
+    <td class="row-head"><b>{{ r.line.name }}</b><span class="sub">{{ r.line.operators }} {% translate "operators" %}</span></td>
+    <td data-label="{% translate 'Order' %}">{{ r.line.order.order_no|default:"—" }}</td>
+    {% if r.line.order %}
+    <td data-label="{% translate 'Colour' %}"><select name="c-{{ r.line.id }}">{% for c in r.line.order.colours %}<option {% if c == r.colour %}selected{% endif %}>{{ c }}</option>{% endfor %}</select></td>
+    <td data-label="{% translate 'Size' %}"><select name="s-{{ r.line.id }}">{% for s in r.line.order.size_list %}<option {% if s == r.size %}selected{% endif %}>{{ s }}</option>{% endfor %}</select></td>
+    <td data-label="{% translate 'Pieces' %}"><input name="p-{{ r.line.id }}" value="{{ r.pieces|default_if_none:'' }}" inputmode="numeric" {% if forloop.first %}data-autofocus{% endif %}></td>
+    {% else %}<td colspan="3" class="muted">{% translate "No order on this line" %}</td>{% endif %}
+    <td class="num" data-label="{% translate 'Target' %}">{{ r.line.target_per_hour }}</td>
+    <td data-label="{% translate 'Efficiency' %}">{% if r.eff is not None %}<div class="eff"><div class="bar {% if r.eff >= 90 %}ok{% elif r.eff >= 80 %}warn{% else %}bad{% endif %}"><i style="width:{% if r.eff > 100 %}100{% else %}{{ r.eff }}{% endif %}%"></i></div><span class="{% if r.eff < 80 %}bad{% endif %}">{{ r.eff }}%</span></div>{% else %}<span class="muted">—</span>{% endif %}</td>
+  </tr>{% endfor %}</tbody>
+</table></div>
+{% if can_edit_orders %}<div class="actions"><button class="btn">{% blocktranslate %}Save {{ hour }}:00 hour{% endblocktranslate %}</button></div>{% endif %}
+</form>
+
+<h2>{% translate "Day so far" %}</h2>
+<div class="tbl-scroll"><table class="tbl">
+  <thead><tr><th>{% translate "Line" %}</th>{% for h in hours %}<th class="num">{{ h }}</th>{% endfor %}<th class="num">{% translate "Total" %}</th></tr></thead>
+  <tbody>{% for r in rows %}<tr><td><b>{{ r.line.name }}</b></td>{% for p in r.day %}<td class="num">{% if p is None %}<span class="muted">·</span>{% else %}{{ p }}{% endif %}</td>{% endfor %}<td class="num"><b>{{ r.total }}</b></td></tr>{% endfor %}</tbody>
+</table></div>
+{% endblock %}
+{% block scripts %}<script>
+// Jump straight to the first piece count on a desktop keyboard; on phones this would pop the keyboard and scroll the grid.
+if (matchMedia('(min-width: 900px)').matches) document.querySelector('[data-autofocus]')?.focus()
+</script>{% endblock %}

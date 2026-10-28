@@ -1,0 +1,46 @@
+{% extends "core/base.html" %}{% load i18n humanize %}
+{% block title %}{% translate "Checking & packing" %}{% endblock %}
+{% block content %}
+<div class="head"><h1>{% translate "Checking & packing" %}</h1>
+  <form method="get" class="inline-form tight"><select name="order" onchange="this.form.submit()" aria-label="{% translate 'Order' %}">{% for o in orders %}<option value="{{ o.pk }}" {% if o.pk == order.pk %}selected{% endif %}>{{ o.order_no }} · {{ o.style }}</option>{% endfor %}</select></form>
+</div>
+{% for e in errors %}<div class="flash err">{{ e }}</div>{% endfor %}
+<div class="tbl-scroll"><table class="tbl">
+  <thead><tr><th>{% translate "Colour" %}</th><th>{% translate "Size" %}</th><th class="num">{% translate "Order qty" %}</th><th class="num">{% translate "Cut" %}</th><th class="num">{% translate "Sewn" %}</th><th class="num">{% translate "Checked" %}</th><th class="num">{% translate "In rework" %}</th><th class="num">{% translate "Passed" %}</th><th class="num">{% translate "Packed" %}</th><th class="num">{% translate "Balance" %}</th></tr></thead>
+  <tbody>{% for r in rows %}<tr><td><b>{{ r.colour }}</b></td><td>{{ r.size }}</td><td class="num">{{ r.qty|intcomma }}</td><td class="num">{{ r.cut|intcomma }}</td><td class="num">{{ r.sewn|intcomma }}</td><td class="num">{{ r.checked|intcomma }}</td><td class="num">{% if r.rework %}<b class="warn">{{ r.rework }}</b>{% else %}—{% endif %}</td><td class="num">{{ r.passed|intcomma }}</td><td class="num">{{ r.packed|intcomma }}</td><td class="num">{{ r.balance|intcomma }}</td></tr>{% endfor %}</tbody>
+</table></div>
+
+{% if can_edit_orders %}
+<div class="two">
+  <form method="post" class="card form-grid">{% csrf_token %}<h3>{% translate "Checking — one table, one hour" %}</h3>
+    <input type="hidden" name="order" value="{{ order.pk }}">
+    <label>{% translate "Hour" %}<select name="hour">{% for h in hours %}<option value="{{ h }}">{{ h }}:00</option>{% endfor %}</select></label>
+    <label>{% translate "Colour" %}<select name="colour">{% for c in order.colours %}<option>{{ c }}</option>{% endfor %}</select></label>
+    <label>{% translate "Size" %}<select name="size">{% for s in order.size_list %}<option>{{ s }}</option>{% endfor %}</select></label>
+    <label>{% translate "Checked" %}<input name="checked" inputmode="numeric"></label>
+    <label>{% translate "Rework" %}<input name="rework" inputmode="numeric"></label>
+    <label>{% translate "Reject" %}<input name="reject" inputmode="numeric"></label>
+    <label>{% translate "Rework OK'd" %}<input name="rework_ok" inputmode="numeric"></label>
+    <label>{% translate "Main defect" %}<select name="defect"><option value="">—</option>{% for k, l in defects %}<option value="{{ k }}">{{ l }}</option>{% endfor %}</select></label>
+    <div class="actions"><button class="btn">{% translate "Save checking" %}</button></div>
+  </form>
+  <form method="post" class="card form-grid">{% csrf_token %}<h3>{% translate "Packing" %}</h3>
+    <input type="hidden" name="order" value="{{ order.pk }}"><input type="hidden" name="pack" value="1">
+    <label>{% translate "Colour" %}<select name="colour">{% for c in order.colours %}<option>{{ c }}</option>{% endfor %}</select></label>
+    <label>{% translate "Size" %}<select name="size">{% for s in order.size_list %}<option>{{ s }}</option>{% endfor %}</select></label>
+    <label>{% translate "Pieces" %}<input name="pieces" inputmode="numeric"></label>
+    <label>{% translate "Carton nos." %}<input name="cartons" placeholder="C-101–C-104"></label>
+    <div class="actions"><button class="btn">{% translate "Save packing" %}</button></div>
+  </form>
+</div>
+{% endif %}
+
+<div class="two">
+<div><h2>{% translate "Recent checking" %}</h2>
+<div class="tbl-scroll"><table class="tbl"><thead><tr><th>{% translate "Date" %}</th><th>{% translate "Hour" %}</th><th>{% translate "Colour" %} / {% translate "Size" %}</th><th class="num">{% translate "Checked" %}</th><th class="num">{% translate "Passed" %}</th><th>{% translate "Main defect" %}</th></tr></thead>
+<tbody>{% for e in recent %}<tr><td>{{ e.date|date:"d M" }}</td><td>{{ e.hour }}:00</td><td>{{ e.colour }} / {{ e.size }}</td><td class="num">{{ e.checked }}</td><td class="num">{{ e.passed }}</td><td>{{ e.get_defect_display|default:"—" }}</td></tr>{% empty %}<tr><td colspan="6" class="muted">{% translate "Nothing checked yet." %}</td></tr>{% endfor %}</tbody></table></div></div>
+<div><h2>{% translate "Recent packing" %}</h2>
+<div class="tbl-scroll"><table class="tbl"><thead><tr><th>{% translate "Date" %}</th><th>{% translate "Colour" %} / {% translate "Size" %}</th><th class="num">{% translate "Pieces" %}</th><th>{% translate "Cartons" %}</th></tr></thead>
+<tbody>{% for e in packed %}<tr><td>{{ e.date|date:"d M" }}</td><td>{{ e.colour }} / {{ e.size }}</td><td class="num">{{ e.pieces }}</td><td>{{ e.cartons }}</td></tr>{% empty %}<tr><td colspan="4" class="muted">{% translate "Nothing packed yet." %}</td></tr>{% endfor %}</tbody></table></div></div>
+</div>
+{% endblock %}

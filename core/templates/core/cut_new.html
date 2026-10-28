@@ -1,0 +1,50 @@
+{% extends "core/base.html" %}{% load i18n %}
+{% block title %}{% translate "New cut lot" %}{% endblock %}
+{% block content %}
+<p class="crumb"><a href="{% url 'cutting' %}">{% translate "Cutting" %}</a> / {% translate "New cut lot" %}</p>
+<div class="head"><h1>{% translate "New cut lot" %}</h1></div>
+<form method="get" class="inline-form picker">
+  <label>{% translate "Order" %}<select name="order" onchange="this.form.submit()">{% for o in orders %}<option value="{{ o.pk }}" {% if o.pk == order.pk %}selected{% endif %}>{{ o.order_no }} · {{ o.style }}</option>{% endfor %}</select></label>
+  <label>{% translate "Colour" %}<select name="colour" onchange="this.form.submit()">{% for c in order.colours %}<option {% if c == colour %}selected{% endif %}>{{ c }}</option>{% endfor %}</select></label>
+  <label>{% translate "Dia line" %}<select name="dia" onchange="this.form.submit()">{% for d in order.dia_lines.all %}<option value="{{ d.pk }}" {% if d.pk == dia.pk %}selected{% endif %}>{{ d.table_dia|floatformat:"-1" }}" · {{ d.sizes }}</option>{% endfor %}</select></label>
+</form>
+
+<form method="post">{% csrf_token %}
+<input type="hidden" name="order" value="{{ order.pk }}"><input type="hidden" name="colour" value="{{ colour }}"><input type="hidden" name="dia" value="{{ dia.pk }}">
+{% for e in errors %}<div class="flash err">{{ e }}</div>{% endfor %}
+<div class="inline-form">
+  {% for f in head %}<label>{{ f.label }}{{ f }}{% for e in f.errors %}<small class="err">{{ e }}</small>{% endfor %}</label>{% endfor %}
+  <p class="muted small">{% translate "Target" %} {{ order.target_gsm }} GSM ±5% · {% translate "table dia" %} {{ dia.table_dia|floatformat:"-1" }}" −0.5"</p>
+</div>
+
+<h2>{% translate "Rolls laid" %}</h2>
+<div class="tbl-scroll stack-m"><table class="tbl entry">
+  <thead><tr><th>{% translate "Fabric lot" %}</th><th>{% translate "Roll" %}</th><th>kg</th><th>GSM</th><th>{% translate "Width" %}</th><th>{% translate "Defect" %}</th><th>{% translate "Level" %}</th><th>{% translate "kg rejected" %}</th><th>{% translate "kg returned" %}</th></tr></thead>
+  <tbody>{% for r in rows %}<tr>
+    <td class="row-head" data-label="{% translate 'Fabric lot' %}"><select name="r{{ r.i }}-lot"><option value="">{% translate "Select…" %}</option>{% for l in lots %}<option value="{{ l.pk }}" {% if r.lot == l.pk|stringformat:'s' %}selected{% endif %}>{{ l.lot_no }} · {{ l.colour }} {{ l.dia_line.table_dia|floatformat:"-1" }}"</option>{% endfor %}</select></td>
+    <td data-label="{% translate 'Roll' %}"><input name="r{{ r.i }}-roll" value="{{ r.roll }}" placeholder="R-{{ r.n }}"></td>
+    <td data-label="kg"><input name="r{{ r.i }}-kg" value="{{ r.kg }}" inputmode="decimal"></td>
+    <td data-label="GSM"><input name="r{{ r.i }}-gsm" value="{{ r.gsm }}" inputmode="numeric"></td>
+    <td data-label="{% translate 'Width' %}"><input name="r{{ r.i }}-width" value="{{ r.width }}" inputmode="decimal"></td>
+    <td data-label="{% translate 'Defect' %}"><select name="r{{ r.i }}-defect"><option value="">—</option>{% for k, l in defects %}<option value="{{ k }}" {% if r.defect == k %}selected{% endif %}>{{ l }}</option>{% endfor %}</select></td>
+    <td data-label="{% translate 'Level' %}"><select name="r{{ r.i }}-level"><option value="">—</option>{% for k, l in levels %}<option value="{{ k }}" {% if r.level == k %}selected{% endif %}>{{ l }}</option>{% endfor %}</select></td>
+    <td data-label="{% translate 'kg rejected' %}"><input name="r{{ r.i }}-rej" value="{{ r.rej }}" inputmode="decimal"></td>
+    <td data-label="{% translate 'kg returned' %}"><input name="r{{ r.i }}-ret" value="{{ r.ret }}" inputmode="decimal"></td>
+  </tr>{% endfor %}</tbody>
+</table></div>
+
+<h2>{% translate "Pieces cut" %}</h2>
+<div class="tbl-scroll"><table class="tbl entry narrow">
+  <thead><tr>{% for s, v in pcs %}<th class="num">{{ s }}</th>{% endfor %}</tr></thead>
+  <tbody><tr>{% for s, v in pcs %}<td><input class="q" name="pcs-{{ s }}" value="{{ v }}" inputmode="numeric"></td>{% endfor %}</tr></tbody>
+</table></div>
+
+{% if warnings %}
+<div class="warn-box">
+  {% for w in warnings %}<p>{{ w }}</p>{% endfor %}
+  <label class="check"><input type="checkbox" name="confirm" value="1"> {% translate "Use these rolls anyway" %}</label>
+</div>
+{% endif %}
+<div class="actions"><button class="btn">{% translate "Save cut lot" %}</button></div>
+</form>
+{% endblock %}

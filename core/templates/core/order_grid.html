@@ -5,7 +5,7 @@
 {% for e in errors %}<div class="flash err">{{ e }}</div>{% endfor %}
 <form method="post" class="card">{% csrf_token %}
 <p class="muted small">{% translate "Tab moves across a row. Totals update as you type." %}</p>
-<table class="tbl grid entry" id="grid">
+<div class="tbl-scroll"><table class="tbl grid entry" id="grid">
   <thead><tr><th>{% translate "Colour" %}</th>{% for si, s in sizes %}<th class="num">{{ s }}</th>{% endfor %}<th class="num">{% translate "Total" %}</th></tr></thead>
   <tbody>
   {% for ci, colour, cells in rows %}<tr><td><b>{{ colour }}</b></td>{% for si, q in cells %}<td><input class="q" data-s="{{ si }}" name="qty-{{ ci }}-{{ si }}" value="{{ q }}" inputmode="numeric"></td>{% endfor %}<td class="num rt">0</td></tr>{% endfor %}
@@ -15,7 +15,7 @@
     <tr><td>{% translate "Total" %}</td>{% for si, s in sizes %}<td class="num ct" data-s="{{ si }}">0</td>{% endfor %}<td class="num" id="gt">0</td></tr>
     <tr><td>{% translate "Costed kg / pc" %}</td>{% for si, k in kg %}<td><input name="kg-{{ si }}" value="{{ k }}" inputmode="decimal"></td>{% endfor %}<td></td></tr>
   </tfoot>
-</table>
+</table></div>
 {% if has_qty %}<label class="reason">{% translate "Reason for amendment (required if quantities change)" %}<input name="reason" placeholder="{% translate 'e.g. Buyer revised PO on 28 Oct' %}"></label>{% endif %}
 <div class="actions"><button class="btn">{% translate "Save" %}</button></div>
 </form>

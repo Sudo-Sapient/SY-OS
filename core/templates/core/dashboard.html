@@ -1,0 +1,32 @@
+{% extends "core/base.html" %}{% load i18n humanize %}
+{% block title %}{% translate "Dashboard" %}{% endblock %}
+{% block content %}
+<div class="head"><h1>{{ day|date:"l, d M" }}</h1></div>
+<dl class="facts">
+  <div><dt>{% translate "Sewn today" %}</dt><dd>{{ total|intcomma }} <span class="muted">/ {{ target|intcomma }}</span></dd></div>
+  <div><dt>{% translate "Defect rate" %}</dt><dd>{{ defect_rate }}%</dd></div>
+  <div><dt>{% translate "Trims lines short" %}</dt><dd class="{% if trims_short %}warn{% endif %}">{{ trims_short }}</dd></div>
+  <div><dt>{% translate "Alerts" %}</dt><dd class="{% if alerts %}bad{% endif %}">{{ alerts|length }}</dd></div>
+</dl>
+{% if alerts %}<div class="alerts">{% for level, text in alerts %}<div class="alert {{ level }}">{{ text }}</div>{% endfor %}</div>{% endif %}
+
+<div class="two">
+<div class="card"><h3>{% translate "Output by hour" %}</h3>
+  <div class="bars">{% for h in hours %}<div class="col {% if h.pct >= 90 %}ok{% elif h.pct >= 80 %}warn{% else %}bad{% endif %}" title="{{ h.done }} / {{ h.target }}"><span class="tgt" style="bottom:calc({{ h.t }}% * .78 + 34px)"></span><i style="height:{% widthratio h.h 100 78 %}%"></i><b>{{ h.done }}</b><small>{{ h.hour }}:00</small></div>{% empty %}<p class="muted">{% translate "No sewing entered yet." %}</p>{% endfor %}</div>
+</div>
+<div class="card"><h3>{% translate "Lines today" %}</h3>
+  {% for l in lines %}<div class="pipe"><span>{{ l.line.name }} <small class="muted">{{ l.line.order.order_no }}</small></span><div class="bar {% if l.eff >= 90 %}ok{% elif l.eff >= 80 %}warn{% else %}bad{% endif %}"><i style="width:{% if l.eff > 100 %}100{% else %}{{ l.eff }}{% endif %}%"></i></div><b>{{ l.eff }}%</b></div>{% endfor %}
+</div>
+</div>
+
+<div class="two">
+{% for p in pipeline %}
+<div class="card"><h3><a href="{% url 'order_detail' p.order.pk %}">{{ p.order.order_no }}</a> <span class="muted">· {{ p.qty|intcomma }} {% translate "pcs" %}</span></h3>
+  {% for n, v, pct in p.stages %}<div class="pipe"><span>{{ n }}</span><div class="bar"><i style="width:{{ pct }}%"></i></div><b>{{ v|intcomma }}</b></div>{% endfor %}
+</div>
+{% endfor %}
+<div class="card"><h3>{% translate "Top defects today" %}</h3>
+  {% for d, n, w in defects %}<div class="pipe"><span>{{ d }}</span><div class="bar quiet"><i style="width:{{ w }}%"></i></div><b>{{ n }}</b></div>{% empty %}<p class="muted">{% translate "No defects recorded today." %}</p>{% endfor %}
+</div>
+</div>
+{% endblock %}

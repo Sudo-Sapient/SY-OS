@@ -1,0 +1,1 @@
+{% load i18n %}{% if s == "received" %}<span class="pill ok">{% translate "Received" %}</span>{% elif s == "partial" %}<span class="pill warn">{% translate "Partial" %}</span>{% elif s == "overdue" %}<span class="pill bad">{% translate "Overdue" %}</span>{% else %}<span class="pill">{% translate "On order" %}</span>{% endif %}

@@ -1,0 +1,36 @@
+{% extends "core/base.html" %}{% load i18n humanize %}
+{% block title %}{% translate "Cutting" %}{% endblock %}
+{% block content %}
+<div class="head"><h1>{% translate "Cutting" %}</h1>
+  <form method="get" action="{% url 'cut_new' %}" class="inline-form tight">
+    <select name="order" aria-label="{% translate 'Order' %}">{% for o in orders %}<option value="{{ o.pk }}">{{ o.order_no }} · {{ o.style }}</option>{% endfor %}</select>
+    <button class="btn">{% translate "New cut lot" %}</button>
+  </form>
+</div>
+<div class="tbl-scroll"><table class="tbl">
+  <thead><tr><th>{% translate "Cut lot" %}</th><th>{% translate "Date" %}</th><th>{% translate "Order" %}</th><th>{% translate "Colour" %}</th><th>{% translate "Dia" %}</th><th class="num">{% translate "Pieces" %}</th><th class="num">{% translate "kg used" %}</th><th class="num">{% translate "Costed kg" %}</th><th>{% translate "Consumption" %}</th><th>{% translate "Bundles" %}</th></tr></thead>
+  <tbody>{% for c in lots %}<tr>
+    <td><b>{{ c.cut_no }}</b></td><td>{{ c.date|date:"d M" }}</td><td>{{ c.order.order_no }}</td><td>{{ c.colour }}</td><td>{{ c.dia_line.table_dia|floatformat:"-1" }}"</td>
+    <td class="num">{{ c.pieces|intcomma }}</td><td class="num">{{ c.kg_used|floatformat:1 }}</td><td class="num">{{ c.kg_costed|floatformat:1 }}</td>
+    <td><span class="pill {{ c.consumption_status }}">{% if c.consumption_pct > 0 %}+{% endif %}{{ c.consumption_pct|floatformat:1 }}%</span></td>
+    <td class="small">{% for s in c.sizes.all %}<span class="chip">{{ s.size }} {{ s.bundle_from }}–{{ s.bundle_to }}</span>{% endfor %}</td></tr>
+  {% empty %}<tr><td colspan="10" class="muted">{% translate "No cut lots yet." %}</td></tr>{% endfor %}</tbody>
+</table></div>
+
+<h2>{% translate "Fabric flags" %}</h2>
+<div class="tbl-scroll"><table class="tbl">
+  <thead><tr><th>{% translate "Roll" %}</th><th>{% translate "Fabric lot" %}</th><th>{% translate "Defect" %}</th><th>{% translate "Level" %}</th><th class="num">{% translate "kg rejected" %}</th>{% if is_admin %}<th class="num">₹</th>{% endif %}<th>{% translate "Flagged to" %}</th></tr></thead>
+  <tbody>{% for r in flags %}{% with src=r.made_by %}<tr>
+    <td><b>{{ r.roll_no }}</b><span class="sub">{{ r.cut_lot.cut_no }}</span></td><td>{{ r.fabric_lot.lot_no }}</td><td>{{ r.get_defect_display }}</td>
+    <td><span class="pill {% if r.level == 'critical' %}bad{% elif r.level == 'major' %}warn{% endif %}">{{ r.get_level_display|default:"—" }}</span></td>
+    <td class="num">{{ r.kg_rejected|floatformat:1 }}</td>{% if is_admin %}<td class="num">{% if r.rupees is not None %}{{ r.rupees|floatformat:0|intcomma }}{% else %}—{% endif %}</td>{% endif %}
+    <td>{{ r.vertical }}{% if src %}<span class="sub">{{ src.party|default:"" }}{% if src.reference %} · {{ src.reference }}{% endif %}</span>{% endif %}</td></tr>{% endwith %}
+  {% empty %}<tr><td colspan="7" class="muted">{% translate "No fabric defects flagged." %}</td></tr>{% endfor %}</tbody>
+</table></div>
+
+<h2>{% translate "Fabric in hand" %}</h2>
+<div class="tbl-scroll"><table class="tbl">
+  <thead><tr><th>{% translate "Lot" %}</th><th>{% translate "Order" %}</th><th>{% translate "Colour" %}</th><th>{% translate "Dia" %}</th><th class="num">{% translate "In-house kg" %}</th><th class="num">{% translate "In hand kg" %}</th></tr></thead>
+  <tbody>{% for l, bal in balances %}<tr><td><b>{{ l.lot_no }}</b></td><td>{{ l.order.order_no }}</td><td>{{ l.colour }}</td><td>{{ l.dia_line.table_dia|floatformat:"-1" }}"</td><td class="num">{{ l.in_house_kg|floatformat:1 }}</td><td class="num"><b>{{ bal|floatformat:1 }}</b></td></tr>{% endfor %}</tbody>
+</table></div>
+{% endblock %}
