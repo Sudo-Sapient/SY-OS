@@ -1,0 +1,1 @@
+{% load i18n %}{% if s == "on_track" %}<span class="pill ok">{% translate "On track" %}</span>{% elif s == "late" %}<span class="pill warn">{% translate "Late inward" %}</span>{% elif s == "short" %}<span class="pill bad">{% translate "Short planned" %}</span>{% else %}<span class="pill">{% translate "No dia program" %}</span>{% endif %}

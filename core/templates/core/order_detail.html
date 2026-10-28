@@ -1,0 +1,53 @@
+{% extends "core/base.html" %}{% load i18n %}
+{% block title %}{{ order.order_no }}{% endblock %}
+{% block content %}
+{% include "core/_order_head.html" %}
+<div class="kpis">
+  <div><small>{% translate "Pieces" %}</small><b>{{ total }}</b></div>
+  <div><small>{% translate "Colours × sizes" %}</small><b>{{ grid|length }} × {{ sizes|length }}</b></div>
+  <div><small>{% translate "Cut-start" %}</small><b>{{ order.cut_start|date:"d M Y" }}</b></div>
+  <div><small>{% translate "Delivery" %}</small><b>{{ order.delivery|date:"d M Y" }}</b></div>
+  <div><small>{% translate "Bundle tickets" %}</small><b>{{ tickets }}</b></div>
+</div>
+
+<h2>{% translate "Colour × size grid" %}</h2>
+<table class="tbl grid">
+  <thead><tr><th>{% translate "Colour" %}</th>{% for s in sizes %}<th class="num">{{ s }}</th>{% endfor %}<th class="num">{% translate "Total" %}</th></tr></thead>
+  <tbody>
+  {% for colour, qtys, t in grid %}<tr><td><b>{{ colour }}</b></td>{% for q in qtys %}<td class="num">{{ q }}</td>{% endfor %}<td class="num"><b>{{ t }}</b></td></tr>{% endfor %}
+  </tbody>
+  <tfoot>
+    <tr><td>{% translate "Total" %}</td>{% for t in size_totals %}<td class="num">{{ t }}</td>{% endfor %}<td class="num">{{ total }}</td></tr>
+    <tr class="sub"><td>{% translate "Costed kg / pc" %}</td>{% for k in kg %}<td class="num">{{ k|floatformat:3 }}</td>{% endfor %}<td></td></tr>
+    <tr class="sub"><td>{% blocktranslate with n=order.pieces_per_bundle %}Bundles ({{ n }} pcs){% endblocktranslate %}</td>{% for b in bundles %}<td class="num">{{ b }}</td>{% endfor %}<td></td></tr>
+  </tfoot>
+</table>
+<p class="muted small">{% translate "Bundle parts" %}: {{ order.bundle_parts }}</p>
+
+<div class="two">
+<div>
+<h2>{% translate "Dia program" %}</h2>
+<table class="tbl">
+  <thead><tr><th>{% translate "Sizes" %}</th><th class="num">{% translate "Knit dia" %}</th><th class="num">{% translate "Gauge" %}</th><th class="num">{% translate "Table dia" %}</th><th>{% translate "Width" %}</th></tr></thead>
+  <tbody>{% for d in order.dia_lines.all %}<tr><td>{{ d.sizes }}</td><td class="num">{{ d.knit_dia }}"</td><td class="num">{{ d.gauge }}</td><td class="num">{{ d.table_dia }}"</td><td>{{ d.get_width_type_display }}</td></tr>{% empty %}<tr><td colspan="5" class="muted">{% translate "Not set" %}</td></tr>{% endfor %}</tbody>
+</table>
+<h2>{% translate "Fabric needed" %}</h2>
+<table class="tbl">
+  <thead><tr><th>{% translate "Colour" %}</th><th>{% translate "Dia" %}</th><th class="num">{% translate "Need kg" %}</th><th>{% translate "Status" %}</th></tr></thead>
+  <tbody>{% for r in window %}<tr><td>{{ r.colour }}</td><td>{{ r.dia }}</td><td class="num">{{ r.need|floatformat:1 }}</td><td>{% include "core/_status.html" with s=r.status %}</td></tr>{% endfor %}</tbody>
+</table>
+</div>
+<div>
+<h2>{% translate "Trims" %} <span class="muted small">{% translate "required = qty × per piece × (1 + wastage %)" %}</span></h2>
+<table class="tbl">
+  <thead><tr><th>{% translate "Item" %}</th><th class="num">{% translate "Per pc" %}</th><th class="num">{% translate "Wastage" %}</th><th>{% translate "Supplier" %}</th><th class="num">{% translate "Required" %}</th></tr></thead>
+  <tbody>{% for t, req in trims %}<tr><td>{{ t.item }}{% if t.size_wise %} <span class="tag">{% translate "size-wise" %}</span>{% endif %}</td><td class="num">{{ t.per_piece|floatformat:"-3" }} {{ t.unit }}</td><td class="num">{{ t.wastage_pct|floatformat:"-1" }}%</td><td>{{ t.supplier|default:"—" }}</td><td class="num"><b>{{ req }}</b></td></tr>{% empty %}<tr><td colspan="5" class="muted">{% translate "Not set" %}</td></tr>{% endfor %}</tbody>
+</table>
+</div>
+</div>
+
+<h2>{% translate "Amendments" %}</h2>
+{% for a in order.amendments.all %}
+  <div class="amend"><b>{{ a.created_at|date:"d M Y H:i" }}</b> · {{ a.created_by }} · <i>{{ a.reason }}</i><pre>{{ a.change }}</pre></div>
+{% empty %}<p class="muted">{% translate "No amendments." %}</p>{% endfor %}
+{% endblock %}

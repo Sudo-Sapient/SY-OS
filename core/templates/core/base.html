@@ -1,0 +1,40 @@
+{% load i18n static %}{% get_current_language as LANG %}<!doctype html>
+<html lang="{{ LANG }}">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}SY OS{% endblock %} · SY OS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'core/app.css' %}">
+</head>
+<body>
+{% if user.is_authenticated %}
+<header class="top">
+  <a class="brand" href="{% url 'home' %}"><span class="mark">SY</span> OS</a>
+  <nav>
+    <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}on{% endif %}">{% translate "Orders" %}</a>
+    <span class="sep">{% translate "Preview" %}</span>
+    <a href="{% url 'preview_trims' %}" class="{% if request.resolver_match.url_name == 'preview_trims' %}on{% endif %}">{% translate "Trims PO" %}</a>
+    <a href="{% url 'preview_cutting' %}" class="{% if request.resolver_match.url_name == 'preview_cutting' %}on{% endif %}">{% translate "Cutting" %}</a>
+    <a href="{% url 'preview_sewing' %}" class="{% if request.resolver_match.url_name == 'preview_sewing' %}on{% endif %}">{% translate "Hourly entry" %}</a>
+    <a href="{% url 'preview_dashboard' %}" class="{% if request.resolver_match.url_name == 'preview_dashboard' %}on{% endif %}">{% translate "Dashboard" %}</a>
+  </nav>
+  <div class="who">
+    <form action="{% url 'set_language' %}" method="post" class="lang">{% csrf_token %}
+      <input name="next" type="hidden" value="{{ request.get_full_path }}">
+      {% get_available_languages as LANGS %}{% get_language_info_list for LANGS as langs %}
+      {% for l in langs %}<button name="language" value="{{ l.code }}" class="{% if l.code == LANG %}on{% endif %}">{{ l.name_local }}</button>{% endfor %}
+    </form>
+    <span class="user">{{ user.get_full_name|default:user.username }} <small>{% translate user_role %}</small></span>
+    <form action="{% url 'logout' %}" method="post">{% csrf_token %}<button class="link">{% translate "Log out" %}</button></form>
+  </div>
+</header>
+{% endif %}
+{% if milestone %}<div class="preview-bar">{% blocktranslate %}Preview of Milestone {{ milestone }} — sample screen, nothing is saved yet{% endblocktranslate %}</div>{% endif %}
+<main>
+  {% for m in messages %}<div class="flash">{{ m }}</div>{% endfor %}
+  {% block content %}{% endblock %}
+</main>
+{% block scripts %}{% endblock %}
+</body>
+</html>

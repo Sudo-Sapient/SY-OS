@@ -1,0 +1,12 @@
+[project]
+name = "sy-os"
+version = "0.1.0"
+description = "SY OS — production system for a knitwear export factory"
+requires-python = ">=3.13"
+dependencies = [
+    "django>=5.2,<6",
+    "psycopg[binary]>=3.3.6",
+]
+
+[tool.uv]
+package = false

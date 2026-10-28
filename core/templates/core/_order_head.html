@@ -1,0 +1,15 @@
+{% load i18n %}<div class="head">
+  <div>
+    <p class="crumb"><a href="{% url 'home' %}">{% translate "Orders" %}</a> / {{ order.order_no }}</p>
+    <h1>{{ order.order_no }} · {{ order.style }}{% if order.repeat_of %} <span class="tag">{% translate "repeat of" %} {{ order.repeat_of.order_no }}</span>{% endif %}</h1>
+    <p class="muted">{{ order.buyer }} ({{ order.buyer.country }}) · {% translate "PO" %} {{ order.buyer_po }} · {{ order.garment_type }} · {{ order.fabric_quality }} · {{ order.target_gsm }} GSM</p>
+  </div>
+</div>
+<nav class="tabs">
+  <a href="{% url 'order_detail' order.pk %}" class="{% if request.resolver_match.url_name == 'order_detail' %}on{% endif %}">{% translate "Master sheet" %}</a>
+  {% if can_edit_orders %}<a href="{% url 'order_grid' order.pk %}" class="{% if request.resolver_match.url_name == 'order_grid' %}on{% endif %}">{% translate "Quantities & consumption" %}</a>
+  <a href="{% url 'order_setup' order.pk %}" class="{% if request.resolver_match.url_name == 'order_setup' %}on{% endif %}">{% translate "Dia program & trims" %}</a>{% endif %}
+  <a href="{% url 'fabric' order.pk %}" class="{% if request.resolver_match.url_name == 'fabric' %}on{% endif %}">{% translate "Fabric planning" %}</a>
+  {% if is_admin %}<a href="{% url 'costing' order.pk %}" class="admin {% if request.resolver_match.url_name == 'costing' %}on{% endif %}">🔒 {% translate "Costing" %}</a>{% endif %}
+  {% if can_edit_orders %}<a href="{% url 'order_repeat' order.pk %}" class="right">↻ {% translate "Repeat this style" %}</a>{% endif %}
+</nav>

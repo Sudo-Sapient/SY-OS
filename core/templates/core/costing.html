@@ -1,0 +1,18 @@
+{% extends "core/base.html" %}{% load i18n %}
+{% block title %}{% translate "Costing" %}{% endblock %}
+{% block content %}
+{% include "core/_order_head.html" %}
+<div class="note">🔒 {% translate "Admin only. Other logins cannot open this page or read these numbers — the server refuses them." %}</div>
+{% if c %}
+<div class="kpis">
+  <div><small>{% translate "Cost per piece" %}</small><b>₹{{ c.cost_per_piece|floatformat:2 }}</b></div>
+  <div><small>{% translate "Quoted" %}</small><b>${{ c.quoted_usd }}</b><span class="{% if quoted_margin < 0 %}bad{% else %}ok{% endif %}">{% blocktranslate with m=quoted_margin|floatformat:1 %}{{ m }}% margin{% endblocktranslate %}</span></div>
+  <div><small>{% translate "Agreed" %}</small><b>${{ c.agreed_usd }}</b><span class="{% if agreed_margin < 0 %}bad{% else %}ok{% endif %}">{% blocktranslate with m=agreed_margin|floatformat:1 %}{{ m }}% margin{% endblocktranslate %}</span></div>
+  <div><small>{% translate "Exchange rate" %}</small><b>₹{{ c.exchange_rate }}</b></div>
+</div>
+{% endif %}
+<form method="post" class="card form-grid">{% csrf_token %}
+  {% for f in form %}<label>{{ f.label }}{{ f }}{% for e in f.errors %}<small class="err">{{ e }}</small>{% endfor %}</label>{% endfor %}
+  <div class="actions"><button class="btn">{% translate "Save" %}</button></div>
+</form>
+{% endblock %}

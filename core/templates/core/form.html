@@ -1,0 +1,11 @@
+{% extends "core/base.html" %}{% load i18n %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<h1>{{ title }}</h1>
+<form method="post" class="card form-grid">{% csrf_token %}
+  {% for f in form %}
+    <label class="{% if f.errors %}has-err{% endif %}">{{ f.label }}{{ f }}{% if f.help_text %}<small class="muted">{{ f.help_text }}</small>{% endif %}{% for e in f.errors %}<small class="err">{{ e }}</small>{% endfor %}</label>
+  {% endfor %}
+  <div class="actions"><button class="btn">{% translate "Save" %}</button><a class="btn ghost" href="{% url 'home' %}">{% translate "Cancel" %}</a></div>
+</form>
+{% endblock %}

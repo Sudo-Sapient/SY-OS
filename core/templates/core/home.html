@@ -1,0 +1,28 @@
+{% extends "core/base.html" %}{% load i18n %}
+{% block title %}{% translate "Orders" %}{% endblock %}
+{% block content %}
+<div class="head">
+  <div><h1>{% translate "Orders" %}</h1><p class="muted">{% translate "Will the fabric be in-house before cutting must start?" %}</p></div>
+  {% if can_edit_orders %}<a class="btn" href="{% url 'order_new' %}">+ {% translate "New order" %}</a>{% endif %}
+</div>
+<table class="tbl">
+  <thead><tr><th>{% translate "SY order no." %}</th><th>{% translate "Buyer" %}</th><th>{% translate "Style" %}</th><th class="num">{% translate "Pieces" %}</th><th>{% translate "Cut-start" %}</th><th>{% translate "Delivery" %}</th><th>{% translate "Fabric" %}</th><th class="num">{% translate "Gap kg" %}</th></tr></thead>
+  <tbody>
+  {% for o, status, gap in orders %}
+    <tr class="click" onclick="location='{% url 'order_detail' o.pk %}'">
+      <td><a href="{% url 'order_detail' o.pk %}"><b>{{ o.order_no }}</b></a>{% if o.repeat_of %} <span class="tag">{% translate "repeat" %}</span>{% endif %}</td>
+      <td>{{ o.buyer }} <span class="muted">· {{ o.buyer_po }}</span></td>
+      <td>{{ o.style }} <span class="muted">· {{ o.garment_type }}</span></td>
+      <td class="num">{{ o.total_qty }}</td>
+      <td>{{ o.cut_start|date:"d M" }}</td><td>{{ o.delivery|date:"d M" }}</td>
+      <td>{% include "core/_status.html" with s=status %}</td>
+      <td class="num">{% if gap %}{{ gap|floatformat:0 }}{% else %}—{% endif %}</td>
+    </tr>
+  {% empty %}<tr><td colspan="8" class="muted">{% translate "No orders yet." %}</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% if followups %}
+<h2>{% translate "Fabric follow-ups" %} <span class="muted small">{% translate "due within 3 days or overdue" %}</span></h2>
+{% include "core/_followups.html" %}
+{% endif %}
+{% endblock %}

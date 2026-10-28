@@ -1,0 +1,791 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ta\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Manual"
+msgstr "கைமுறை"
+
+msgid "Scan"
+msgstr "ஸ்கேன்"
+
+msgid "Device"
+msgstr "சாதனம்"
+
+msgid "buyer"
+msgstr "வாங்குபவர்"
+
+msgid "country"
+msgstr "நாடு"
+
+msgid "Yarn mill"
+msgstr "நூல் மில்"
+
+msgid "Knitting"
+msgstr "நிட்டிங்"
+
+msgid "Dyeing"
+msgstr "சாயமிடுதல்"
+
+msgid "Washing"
+msgstr "வாஷிங்"
+
+msgid "Compacting"
+msgstr "காம்பாக்டிங்"
+
+msgid "Trims supplier"
+msgstr "டிரிம்ஸ் சப்ளையர்"
+
+msgid "name"
+msgstr "பெயர்"
+
+msgid "type"
+msgstr "வகை"
+
+msgid "phone"
+msgstr "தொலைபேசி"
+
+msgid "own unit"
+msgstr "சொந்த யூனிட்"
+
+msgid "SY order no."
+msgstr "SY ஆர்டர் எண்"
+
+msgid "buyer PO no."
+msgstr "வாங்குபவர் PO எண்"
+
+msgid "style"
+msgstr "ஸ்டைல்"
+
+msgid "garment type"
+msgstr "ஆடை வகை"
+
+msgid "fabric quality"
+msgstr "துணி தரம்"
+
+msgid "target GSM"
+msgstr "இலக்கு GSM"
+
+msgid "sizes"
+msgstr "அளவுகள்"
+
+msgid "pieces per bundle"
+msgstr "ஒரு பண்டிலுக்கு பீஸ்"
+
+msgid "bundle parts"
+msgstr "பண்டில் பாகங்கள்"
+
+msgid "cut-start date"
+msgstr "கட்டிங் தொடக்க தேதி"
+
+msgid "delivery date"
+msgstr "டெலிவரி தேதி"
+
+msgid "repeat of"
+msgstr "மறு ஆர்டர்"
+
+msgid "colour"
+msgstr "நிறம்"
+
+msgid "size"
+msgstr "அளவு"
+
+msgid "quantity"
+msgstr "அளவு (எண்ணிக்கை)"
+
+msgid "costed kg / pc"
+msgstr "கணக்கிட்ட kg / பீஸ்"
+
+msgid "Tubular"
+msgstr "டியூபுலர்"
+
+msgid "Open width"
+msgstr "ஓபன் அகலம்"
+
+msgid "Comma separated, e.g. S,M"
+msgstr "காற்புள்ளியால் பிரிக்கவும், எ.கா. S,M"
+
+msgid "knit dia (in)"
+msgstr "நிட் டயா (இஞ்ச்)"
+
+msgid "gauge"
+msgstr "கேஜ்"
+
+msgid "finished table dia (in)"
+msgstr "முடிந்த டேபிள் டயா (இஞ்ச்)"
+
+msgid "tubular / open"
+msgstr "டியூபுலர் / ஓபன்"
+
+msgid "item"
+msgstr "பொருள்"
+
+msgid "unit"
+msgstr "அலகு"
+
+msgid "per piece"
+msgstr "ஒரு பீஸுக்கு"
+
+msgid "wastage %"
+msgstr "வேஸ்டேஜ் %"
+
+msgid "size-wise"
+msgstr "அளவு வாரியாக"
+
+msgid "supplier"
+msgstr "சப்ளையர்"
+
+msgid "yarn ₹/kg"
+msgstr "நூல் ₹/kg"
+
+msgid "knitting ₹/kg"
+msgstr "நிட்டிங் ₹/kg"
+
+msgid "dyeing ₹/kg"
+msgstr "சாயம் ₹/kg"
+
+msgid "trims ₹/pc"
+msgstr "டிரிம்ஸ் ₹/பீஸ்"
+
+msgid "CMT ₹/pc"
+msgstr "CMT ₹/பீஸ்"
+
+msgid "overhead ₹/pc"
+msgstr "மேல்செலவு ₹/பீஸ்"
+
+msgid "quoted price USD"
+msgstr "கோட் விலை USD"
+
+msgid "agreed price USD"
+msgstr "ஒப்புக்கொண்ட விலை USD"
+
+msgid "exchange rate ₹/USD"
+msgstr "மாற்று விகிதம் ₹/USD"
+
+msgid "reason"
+msgstr "காரணம்"
+
+msgid "change"
+msgstr "மாற்றம்"
+
+msgid "Yarn ordered"
+msgstr "நூல் ஆர்டர்"
+
+msgid "Yarn in-house"
+msgstr "நூல் வந்தது"
+
+msgid "Steam / compacting"
+msgstr "ஸ்டீம் / காம்பாக்டிங்"
+
+msgid "In-house"
+msgstr "ஸ்டோரில்"
+
+msgid "lot no."
+msgstr "லாட் எண்"
+
+msgid "dia line"
+msgstr "டயா லைன்"
+
+msgid "planned kg"
+msgstr "திட்ட kg"
+
+msgid "expected in-house"
+msgstr "வரும் தேதி"
+
+msgid "washing used"
+msgstr "வாஷிங் உண்டு"
+
+msgid "stage"
+msgstr "நிலை"
+
+msgid "date"
+msgstr "தேதி"
+
+msgid "kg"
+msgstr "kg"
+
+msgid "party"
+msgstr "பார்ட்டி"
+
+msgid "machine / batch / yarn lot"
+msgstr "மெஷின் / பேட்ச் / நூல் லாட்"
+
+msgid "note"
+msgstr "குறிப்பு"
+
+msgid "No party yet"
+msgstr "இன்னும் பார்ட்டி இல்லை"
+
+msgid "Copied"
+msgstr "நகலெடுக்கப்பட்டது"
+
+msgid "Copy for WhatsApp"
+msgstr "WhatsApp-க்கு நகலெடு"
+
+msgid "Orders"
+msgstr "ஆர்டர்கள்"
+
+msgid "PO"
+msgstr "PO"
+
+msgid "Master sheet"
+msgstr "மாஸ்டர் ஷீட்"
+
+msgid "Quantities & consumption"
+msgstr "அளவு & நுகர்வு"
+
+msgid "Dia program & trims"
+msgstr "டயா புரோகிராம் & டிரிம்ஸ்"
+
+msgid "Fabric planning"
+msgstr "துணி திட்டமிடல்"
+
+msgid "Costing"
+msgstr "காஸ்டிங்"
+
+msgid "Repeat this style"
+msgstr "இந்த ஸ்டைலை மீண்டும் செய்"
+
+msgid "On track"
+msgstr "சரியான நேரத்தில்"
+
+msgid "Late inward"
+msgstr "தாமதமாக வரும்"
+
+msgid "Short planned"
+msgstr "குறைவாக புக் செய்யப்பட்டது"
+
+msgid "No dia program"
+msgstr "டயா புரோகிராம் இல்லை"
+
+msgid "Preview"
+msgstr "முன்னோட்டம்"
+
+msgid "Trims PO"
+msgstr "டிரிம்ஸ் PO"
+
+msgid "Cutting"
+msgstr "கட்டிங்"
+
+msgid "Hourly entry"
+msgstr "மணிநேர பதிவு"
+
+msgid "Dashboard"
+msgstr "டாஷ்போர்டு"
+
+msgid "Log out"
+msgstr "வெளியேறு"
+
+msgid "Preview of Milestone %(milestone)s — sample screen, nothing is saved yet"
+msgstr "மைல்ஸ்டோன் %(milestone)s முன்னோட்டம் — மாதிரி திரை, இன்னும் எதுவும் சேமிக்கப்படாது"
+
+msgid "Admin only. Other logins cannot open this page or read these numbers — the server refuses them."
+msgstr "நிர்வாகி மட்டும். மற்ற லாகின்கள் இந்தப் பக்கத்தையோ எண்களையோ பார்க்க முடியாது — சர்வர் மறுக்கும்."
+
+msgid "Cost per piece"
+msgstr "ஒரு பீஸ் செலவு"
+
+msgid "Quoted"
+msgstr "கோட்"
+
+msgid "%(m)s%% margin"
+msgstr "%(m)s%% லாபம்"
+
+msgid "Agreed"
+msgstr "ஒப்புக்கொண்டது"
+
+msgid "Exchange rate"
+msgstr "மாற்று விகிதம்"
+
+msgid "Save"
+msgstr "சேமி"
+
+msgid "Colour"
+msgstr "நிறம்"
+
+msgid "Dia line"
+msgstr "டயா லைன்"
+
+msgid "Need kg"
+msgstr "தேவை kg"
+
+msgid "Expected by cut-start"
+msgstr "கட்டிங்கிற்கு முன் வரும்"
+
+msgid "After cut-start"
+msgstr "கட்டிங்கிற்குப் பின்"
+
+msgid "Status"
+msgstr "நிலை"
+
+msgid "Gap kg"
+msgstr "பற்றாக்குறை kg"
+
+msgid "to book"
+msgstr "புக் செய்ய வேண்டும்"
+
+msgid "Expected inward vs need"
+msgstr "வரவு vs தேவை"
+
+msgid "Cumulative fabric kg expected in-house over time against kg needed and the cut-start date"
+msgstr "காலப்போக்கில் வரும் மொத்த துணி kg, தேவை மற்றும் கட்டிங் தேதியுடன்"
+
+msgid "Need"
+msgstr "தேவை"
+
+msgid "Cut-start"
+msgstr "கட்டிங் தொடக்கம்"
+
+msgid "Today"
+msgstr "இன்று"
+
+msgid "kg in-house + expected (cumulative)"
+msgstr "ஸ்டோர் + வரவிருக்கும் kg (மொத்தம்)"
+
+msgid "kg needed"
+msgstr "தேவையான kg"
+
+msgid "cut-start"
+msgstr "கட்டிங் தொடக்கம்"
+
+msgid "Fabric lots"
+msgstr "துணி லாட்கள்"
+
+msgid "Lot"
+msgstr "லாட்"
+
+msgid "Dia"
+msgstr "டயா"
+
+msgid "Planned kg"
+msgstr "திட்ட kg"
+
+msgid "Expected"
+msgstr "வரும் தேதி"
+
+msgid "Stage"
+msgstr "நிலை"
+
+msgid "Last update"
+msgstr "கடைசி புதுப்பிப்பு"
+
+msgid "Update a lot's stage"
+msgstr "லாட் நிலையைப் புதுப்பி"
+
+msgid "Save stage"
+msgstr "நிலையைச் சேமி"
+
+msgid "Add a lot"
+msgstr "புதிய லாட்"
+
+msgid "Add lot"
+msgstr "லாட் சேர்"
+
+msgid "Follow-ups"
+msgstr "பின்தொடர்தல்"
+
+msgid "Cancel"
+msgstr "ரத்து"
+
+msgid "Will the fabric be in-house before cutting must start?"
+msgstr "கட்டிங் தொடங்கும் முன் துணி வந்துவிடுமா?"
+
+msgid "New order"
+msgstr "புதிய ஆர்டர்"
+
+msgid "Buyer"
+msgstr "வாங்குபவர்"
+
+msgid "Style"
+msgstr "ஸ்டைல்"
+
+msgid "Pieces"
+msgstr "பீஸ்"
+
+msgid "Delivery"
+msgstr "டெலிவரி"
+
+msgid "Fabric"
+msgstr "துணி"
+
+msgid "repeat"
+msgstr "மறு ஆர்டர்"
+
+msgid "No orders yet."
+msgstr "இன்னும் ஆர்டர் இல்லை."
+
+msgid "Fabric follow-ups"
+msgstr "துணி பின்தொடர்தல்"
+
+msgid "due within 3 days or overdue"
+msgstr "3 நாட்களுக்குள் அல்லது தாமதம்"
+
+msgid "Log in"
+msgstr "உள்நுழை"
+
+msgid "Production system · buyer PO to packed carton"
+msgstr "உற்பத்தி அமைப்பு · வாங்குபவர் PO முதல் பேக் கார்டன் வரை"
+
+msgid "Wrong username or password."
+msgstr "தவறான பயனர் பெயர் அல்லது கடவுச்சொல்."
+
+msgid "Username"
+msgstr "பயனர் பெயர்"
+
+msgid "Password"
+msgstr "கடவுச்சொல்"
+
+msgid "Demo logins"
+msgstr "டெமோ லாகின்"
+
+msgid "Colours × sizes"
+msgstr "நிறங்கள் × அளவுகள்"
+
+msgid "Bundle tickets"
+msgstr "பண்டில் டிக்கெட்"
+
+msgid "Colour × size grid"
+msgstr "நிறம் × அளவு அட்டவணை"
+
+msgid "Total"
+msgstr "மொத்தம்"
+
+msgid "Costed kg / pc"
+msgstr "கணக்கிட்ட kg / பீஸ்"
+
+msgid "Bundles (%(n)s pcs)"
+msgstr "பண்டில்கள் (%(n)s பீஸ்)"
+
+msgid "Bundle parts"
+msgstr "பண்டில் பாகங்கள்"
+
+msgid "Dia program"
+msgstr "டயா புரோகிராம்"
+
+msgid "Sizes"
+msgstr "அளவுகள்"
+
+msgid "Knit dia"
+msgstr "நிட் டயா"
+
+msgid "Gauge"
+msgstr "கேஜ்"
+
+msgid "Table dia"
+msgstr "டேபிள் டயா"
+
+msgid "Width"
+msgstr "அகலம்"
+
+msgid "Not set"
+msgstr "அமைக்கப்படவில்லை"
+
+msgid "Fabric needed"
+msgstr "தேவையான துணி"
+
+msgid "Trims"
+msgstr "டிரிம்ஸ்"
+
+msgid "required = qty × per piece × (1 + wastage %%)"
+msgstr "தேவை = அளவு × ஒரு பீஸுக்கு × (1 + வேஸ்டேஜ் %%)"
+
+msgid "Item"
+msgstr "பொருள்"
+
+msgid "Per pc"
+msgstr "ஒரு பீஸுக்கு"
+
+msgid "Wastage"
+msgstr "வேஸ்டேஜ்"
+
+msgid "Supplier"
+msgstr "சப்ளையர்"
+
+msgid "Required"
+msgstr "தேவை"
+
+msgid "Amendments"
+msgstr "திருத்தங்கள்"
+
+msgid "No amendments."
+msgstr "திருத்தங்கள் இல்லை."
+
+msgid "Tab moves across a row. Totals update as you type."
+msgstr "Tab அடுத்த கட்டத்துக்குச் செல்லும். தட்டச்சு செய்யும்போதே மொத்தம் மாறும்."
+
+msgid "Add colour"
+msgstr "நிறம் சேர்"
+
+msgid "Reason for amendment (required if quantities change)"
+msgstr "திருத்தக் காரணம் (அளவு மாறினால் கட்டாயம்)"
+
+msgid "e.g. Buyer revised PO on 28 Oct"
+msgstr "எ.கா. 28 அக்டோபர் வாங்குபவர் PO மாற்றினார்"
+
+msgid "sizes grouped into dia lines"
+msgstr "அளவுகள் டயா லைன்களாகப் பிரிக்கப்பட்டது"
+
+msgid "Knit dia (in)"
+msgstr "நிட் டயா (இஞ்ச்)"
+
+msgid "Finished table dia (in)"
+msgstr "முடிந்த டேபிள் டயா (இஞ்ச்)"
+
+msgid "Tubular / open"
+msgstr "டியூபுலர் / ஓபன்"
+
+msgid "Trims list"
+msgstr "டிரிம்ஸ் பட்டியல்"
+
+msgid "Unit"
+msgstr "அலகு"
+
+msgid "Per piece"
+msgstr "ஒரு பீஸுக்கு"
+
+msgid "Wastage %%"
+msgstr "வேஸ்டேஜ் %%"
+
+msgid "Size-wise"
+msgstr "அளவு வாரியாக"
+
+msgid "Cut lot"
+msgstr "கட் லாட்"
+
+msgid "target"
+msgstr "இலக்கு"
+
+msgid "width"
+msgstr "அகலம்"
+
+msgid "Roll"
+msgstr "ரோல்"
+
+msgid "Fabric lot"
+msgstr "துணி லாட்"
+
+msgid "Defect"
+msgstr "குறைபாடு"
+
+msgid "kg returned"
+msgstr "திரும்பிய kg"
+
+msgid "Source"
+msgstr "மூலம்"
+
+msgid "manual"
+msgstr "கைமுறை"
+
+msgid "kg used"
+msgstr "பயன்பட்ட kg"
+
+msgid "Costed kg for pieces cut"
+msgstr "வெட்டிய பீஸுக்கான கணக்கு kg"
+
+msgid "Consumption"
+msgstr "நுகர்வு"
+
+msgid "green ≤ +2%% · amber +2–4%% · red > +4%%"
+msgstr "பச்சை ≤ +2%% · மஞ்சள் +2–4%% · சிவப்பு > +4%%"
+
+msgid "Bundles"
+msgstr "பண்டில்கள்"
+
+msgid "no overlaps allowed"
+msgstr "எண்கள் மீண்டும் வரக்கூடாது"
+
+msgid "Roll R-103 is outside GSM tolerance. It can still be used with a confirmation, and a flag goes to the knitting unit with machine no., kg rejected and rupee value. The ⌨ source becomes a scale or scanner later — same field."
+msgstr "ரோல் R-103 GSM வரம்புக்கு வெளியே உள்ளது. உறுதிப்படுத்திய பின் பயன்படுத்தலாம்; மெஷின் எண், நிராகரித்த kg, ரூபாய் மதிப்புடன் நிட்டிங் யூனிட்டுக்கு கொடி அனுப்பப்படும். ⌨ மூலம் பின்னர் தராசு அல்லது ஸ்கேனர் ஆகும் — அதே புலம்."
+
+msgid "Output against target, defects, pipeline and alerts"
+msgstr "இலக்குக்கு எதிரான உற்பத்தி, குறைபாடுகள், நிலை மற்றும் எச்சரிக்கைகள்"
+
+msgid "Line 3 under 80%% of target for 3 hours"
+msgstr "லைன் 3 கடந்த 3 மணி நேரமாக இலக்கின் 80%% க்குக் கீழ்"
+
+msgid "Open seam rising on"
+msgstr "ஓபன் சீம் அதிகரிக்கிறது:"
+
+msgid "Fabric lot late for cut-start"
+msgstr "கட்டிங்கிற்கு துணி லாட் தாமதம்"
+
+msgid "Output by hour"
+msgstr "மணிநேர உற்பத்தி"
+
+msgid "Order pipeline"
+msgstr "ஆர்டர் நிலை"
+
+msgid "pcs"
+msgstr "பீஸ்"
+
+msgid "Top defects today"
+msgstr "இன்றைய முக்கிய குறைபாடுகள்"
+
+msgid "Open items"
+msgstr "நிலுவையில்"
+
+msgid "Open DCs"
+msgstr "திறந்த DC"
+
+msgid "Trims short"
+msgstr "டிரிம்ஸ் குறைவு"
+
+msgid "Defect rate"
+msgstr "குறைபாடு விகிதம்"
+
+msgid "Hourly sewing"
+msgstr "மணிநேர தையல்"
+
+msgid "One grid, every line. Keyed from supervisors' slips in under two minutes."
+msgstr "ஒரே அட்டவணை, எல்லா லைன்களும். சூப்பர்வைசர் சீட்டிலிருந்து இரண்டு நிமிடத்தில் பதிவு."
+
+msgid "Save hour"
+msgstr "மணிநேரத்தைச் சேமி"
+
+msgid "Line"
+msgstr "லைன்"
+
+msgid "Order"
+msgstr "ஆர்டர்"
+
+msgid "Size"
+msgstr "அளவு"
+
+msgid "Target"
+msgstr "இலக்கு"
+
+msgid "Efficiency"
+msgstr "செயல்திறன்"
+
+msgid "Order, colour and size default from the line plan, so most lines need only the piece count. Later a bundle scan at end of line fills the same row."
+msgstr "ஆர்டர், நிறம், அளவு லைன் திட்டத்திலிருந்து தானாக வரும்; பெரும்பாலான லைன்களுக்கு பீஸ் எண்ணிக்கை மட்டும் போதும். பின்னர் லைன் முடிவில் பண்டில் ஸ்கேன் இதே வரிசையை நிரப்பும்."
+
+msgid "Trims POs"
+msgstr "டிரிம்ஸ் PO-க்கள்"
+
+msgid "Calculated from the live colour × size grid. One PO per supplier, size-wise lines where needed."
+msgstr "நிறம் × அளவு அட்டவணையிலிருந்து கணக்கிடப்பட்டது. ஒவ்வொரு சப்ளையருக்கும் ஒரு PO, தேவையெனில் அளவு வாரியாக."
+
+msgid "Raise all POs"
+msgstr "எல்லா PO-க்களையும் உருவாக்கு"
+
+msgid "No supplier"
+msgstr "சப்ளையர் இல்லை"
+
+msgid "Draft"
+msgstr "வரைவு"
+
+msgid "Buyer PO"
+msgstr "வாங்குபவர் PO"
+
+msgid "required by"
+msgstr "தேவைப்படும் தேதி"
+
+msgid "By size"
+msgstr "அளவு வாரியாக"
+
+msgid "Qty"
+msgstr "அளவு"
+
+msgid "all sizes"
+msgstr "எல்லா அளவுகளும்"
+
+msgid "Colours"
+msgstr "நிறங்கள்"
+
+msgid "Comma separated, e.g. Navy, White"
+msgstr "காற்புள்ளியால் பிரிக்கவும், எ.கா. Navy, White"
+
+msgid "Order created. Enter quantities and consumption."
+msgstr "ஆர்டர் உருவானது. அளவு மற்றும் நுகர்வை உள்ளிடவும்."
+
+msgid "Quantities must be whole numbers and kg must be a number, neither negative."
+msgstr "அளவு முழு எண்ணாகவும் kg எண்ணாகவும் இருக்க வேண்டும், எதுவும் எதிர்மறையாக இருக்கக்கூடாது."
+
+msgid "This order already has quantities. Give a reason for the amendment."
+msgstr "இந்த ஆர்டரில் ஏற்கனவே அளவு உள்ளது. திருத்தக் காரணம் கொடுக்கவும்."
+
+msgid "Saved. Fabric and trims requirements recalculated."
+msgstr "சேமிக்கப்பட்டது. துணி மற்றும் டிரிம்ஸ் தேவை மீண்டும் கணக்கிடப்பட்டது."
+
+msgid "Dia program and trims saved."
+msgstr "டயா புரோகிராம் மற்றும் டிரிம்ஸ் சேமிக்கப்பட்டது."
+
+msgid "Costing saved."
+msgstr "காஸ்டிங் சேமிக்கப்பட்டது."
+
+msgid "Repeat created from %(src)s: consumption, dia program, bundles and trims copied. Enter the new quantities."
+msgstr "%(src)s இலிருந்து மறு ஆர்டர்: நுகர்வு, டயா புரோகிராம், பண்டில், டிரிம்ஸ் நகலெடுக்கப்பட்டது. புதிய அளவை உள்ளிடவும்."
+
+msgid "Repeat order from %(src)s"
+msgstr "%(src)s இலிருந்து மறு ஆர்டர்"
+
+msgid "Lot added."
+msgstr "லாட் சேர்க்கப்பட்டது."
+
+msgid "Stage updated."
+msgstr "நிலை புதுப்பிக்கப்பட்டது."
+
+msgid "Hello %(name)s,"
+msgstr "வணக்கம் %(name)s,"
+
+msgid "team"
+msgstr "குழு"
+
+msgid "Please confirm dispatch for:"
+msgstr "இவற்றின் அனுப்புதலை உறுதிப்படுத்தவும்:"
+
+msgid "overdue since %(d)s"
+msgstr "%(d)s முதல் தாமதம்"
+
+msgid "due %(d)s"
+msgstr "%(d)s அன்று"
+
+msgid "lot"
+msgstr "லாட்"
+
+msgid "Thank you — SY Exports"
+msgstr "நன்றி — SY Exports"
+
+msgid "Needle line (major)"
+msgstr "நீடில் லைன் (பெரியது)"
+
+msgid "Cut"
+msgstr "வெட்டியது"
+
+msgid "Sewn"
+msgstr "தைத்தது"
+
+msgid "Passed"
+msgstr "தேர்ச்சி"
+
+msgid "Packed"
+msgstr "பேக் செய்தது"
+
+msgid "Open seam"
+msgstr "ஓபன் சீம்"
+
+msgid "Skip stitch"
+msgstr "ஸ்கிப் ஸ்டிட்ச்"
+
+msgid "Oil / stain"
+msgstr "எண்ணெய் / கறை"
+
+msgid "Measurement"
+msgstr "அளவீடு"
+
+msgid "Admin"
+msgstr "நிர்வாகி"
+
+msgid "Data entry"
+msgstr "தரவு பதிவு"
+
+msgid "Fabric in-charge"
+msgstr "துணி பொறுப்பாளர்"
+
+msgid "Cutting in-charge"
+msgstr "கட்டிங் பொறுப்பாளர்"
+
+msgid "Supervisor"
+msgstr "சூப்பர்வைசர்"

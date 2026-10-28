@@ -1,0 +1,20 @@
+{% extends "core/base.html" %}{% load i18n %}
+{% block title %}{{ order.order_no }}{% endblock %}
+{% block content %}
+{% include "core/_order_head.html" %}
+<form method="post">{% csrf_token %}
+<h2>{% translate "Dia program" %} <span class="muted small">{% translate "sizes grouped into dia lines" %}</span></h2>
+{{ dia.management_form }}
+<table class="tbl entry">
+  <thead><tr><th>{% translate "Sizes" %}</th><th>{% translate "Knit dia (in)" %}</th><th>{% translate "Gauge" %}</th><th>{% translate "Finished table dia (in)" %}</th><th>{% translate "Tubular / open" %}</th></tr></thead>
+  <tbody>{% for f in dia %}<tr>{{ f.id }}{{ f.order }}<td>{{ f.sizes }}{{ f.sizes.errors }}</td><td>{{ f.knit_dia }}{{ f.knit_dia.errors }}</td><td>{{ f.gauge }}</td><td>{{ f.table_dia }}</td><td>{{ f.width_type }}</td></tr>{% endfor %}</tbody>
+</table>
+<h2>{% translate "Trims list" %}</h2>
+{{ trims.management_form }}
+<table class="tbl entry">
+  <thead><tr><th>{% translate "Item" %}</th><th>{% translate "Unit" %}</th><th>{% translate "Per piece" %}</th><th>{% translate "Wastage %" %}</th><th>{% translate "Size-wise" %}</th><th>{% translate "Supplier" %}</th></tr></thead>
+  <tbody>{% for f in trims %}<tr>{{ f.id }}{{ f.order }}<td>{{ f.item }}{{ f.item.errors }}</td><td>{{ f.unit }}</td><td>{{ f.per_piece }}</td><td>{{ f.wastage_pct }}</td><td class="c">{{ f.size_wise }}</td><td>{{ f.supplier }}</td></tr>{% endfor %}</tbody>
+</table>
+<div class="actions"><button class="btn">{% translate "Save" %}</button></div>
+</form>
+{% endblock %}

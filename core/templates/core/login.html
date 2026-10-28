@@ -1,0 +1,19 @@
+{% extends "core/base.html" %}{% load i18n %}
+{% block title %}{% translate "Log in" %}{% endblock %}
+{% block content %}
+<div class="login">
+  <div class="brand big"><span class="mark">SY</span> OS</div>
+  <p class="muted">{% translate "Production system · buyer PO to packed carton" %}</p>
+  <form method="post" class="card">{% csrf_token %}
+    {% if form.errors %}<p class="err">{% translate "Wrong username or password." %}</p>{% endif %}
+    <label>{% translate "Username" %}<input name="username" autofocus required></label>
+    <label>{% translate "Password" %}<input name="password" type="password" required></label>
+    <button class="btn">{% translate "Log in" %}</button>
+  </form>
+  <p class="muted small">{% translate "Demo logins" %}: <code>admin / admin123</code> · <code>entry / entry123</code> · <code>fabric / fabric123</code></p>
+  <form action="{% url 'set_language' %}" method="post" class="lang center">{% csrf_token %}
+    <input name="next" type="hidden" value="{{ request.get_full_path }}">
+    <button name="language" value="en">English</button><button name="language" value="hi">हिन्दी</button><button name="language" value="ta">தமிழ்</button>
+  </form>
+</div>
+{% endblock %}

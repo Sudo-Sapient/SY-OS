@@ -1,0 +1,24 @@
+{% extends "core/base.html" %}{% load i18n %}
+{% block title %}{% translate "Dashboard" %}{% endblock %}
+{% block content %}
+<div class="head"><div><h1>{% translate "Today" %}</h1><p class="muted">{% translate "Output against target, defects, pipeline and alerts" %}</p></div></div>
+<div class="alerts">
+  <div class="alert bad">⚠ {% translate "Line 3 under 80% of target for 3 hours" %}</div>
+  <div class="alert warn">⚠ {% translate "Open seam rising on" %} {{ order.order_no }}</div>
+  <div class="alert warn">⚠ {% translate "Fabric lot late for cut-start" %} · {{ order.order_no }}</div>
+</div>
+<div class="two">
+<div class="card"><h3>{% translate "Output by hour" %}</h3>
+  <div class="bars">{% for h, d, t, p in hours %}<div class="col {% if p >= 90 %}ok{% elif p >= 80 %}warn{% else %}bad{% endif %}"><i style="height:{{ p }}%"></i><b>{{ d }}</b><small>{{ h }}:00</small></div>{% endfor %}</div>
+</div>
+<div class="card"><h3>{% translate "Order pipeline" %} · {{ order.order_no }} ({{ qty }} {% translate "pcs" %})</h3>
+  {% for n, v, p in pipeline %}<div class="pipe"><span>{{ n }}</span><div class="bar"><i style="width:{{ p }}%"></i></div><b>{{ v }}</b></div>{% endfor %}
+</div>
+<div class="card"><h3>{% translate "Top defects today" %}</h3>
+  {% for n, c in defects %}<div class="pipe"><span>{{ n }}</span><div class="bar warn"><i style="width:{% widthratio c 31 100 %}%"></i></div><b>{{ c }}</b></div>{% endfor %}
+</div>
+<div class="card"><h3>{% translate "Open items" %}</h3>
+  <div class="kpis tight"><div><small>{% translate "Open DCs" %}</small><b>4</b></div><div><small>{% translate "Trims short" %}</small><b class="warn">2</b></div><div><small>{% translate "Defect rate" %}</small><b>3.8%</b></div></div>
+</div>
+</div>
+{% endblock %}

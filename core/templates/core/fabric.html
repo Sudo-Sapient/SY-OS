@@ -1,0 +1,57 @@
+{% extends "core/base.html" %}{% load i18n %}
+{% block title %}{% translate "Fabric planning" %}{% endblock %}
+{% block content %}
+{% include "core/_order_head.html" %}
+<table class="tbl">
+  <thead><tr><th>{% translate "Colour" %}</th><th>{% translate "Dia line" %}</th><th class="num">{% translate "Need kg" %}</th><th class="num">{% translate "In-house" %}</th><th class="num">{% translate "Expected by cut-start" %}</th><th class="num">{% translate "After cut-start" %}</th><th>{% translate "Status" %}</th><th class="num">{% translate "Gap kg" %}</th></tr></thead>
+  <tbody>{% for r in rows %}
+    <tr class="st-{{ r.status }}"><td><b>{{ r.colour }}</b></td><td>{{ r.dia }}</td><td class="num">{{ r.need|floatformat:1 }}</td><td class="num">{{ r.in_house|floatformat:1 }}</td><td class="num">{{ r.by_cut|floatformat:1 }}</td><td class="num">{{ r.after_cut|floatformat:1 }}</td>
+    <td>{% include "core/_status.html" with s=r.status %}</td>
+    <td class="num">{% if r.gap %}<b>{{ r.gap|floatformat:1 }}</b>{% if r.status == "short" %} <small class="muted">{% translate "to book" %}</small>{% endif %}{% else %}—{% endif %}</td></tr>
+  {% endfor %}</tbody>
+</table>
+
+{% if chart %}
+<h2>{% translate "Expected inward vs need" %}</h2>
+<div class="card chart">
+<svg viewBox="-50 -16 {{ chart.w|add:70 }} {{ chart.h|add:56 }}" role="img" aria-label="{% translate 'Cumulative fabric kg expected in-house over time against kg needed and the cut-start date' %}">
+  <line x1="0" y1="{{ chart.h }}" x2="{{ chart.w }}" y2="{{ chart.h }}" class="axis"/>
+  <line x1="0" y1="{{ chart.need_y }}" x2="{{ chart.w }}" y2="{{ chart.need_y }}" class="need"/>
+  <text x="-6" y="{{ chart.need_y }}" class="lbl end" dy="4">{{ chart.need|floatformat:0 }} kg</text>
+  <text x="{{ chart.w }}" y="{{ chart.need_y }}" class="lbl end" dy="-6">{% translate "Need" %}</text>
+  <line x1="{{ chart.cut_x }}" y1="0" x2="{{ chart.cut_x }}" y2="{{ chart.h }}" class="cut"/>
+  <text x="{{ chart.cut_x }}" y="-4" class="lbl mid strong">{% translate "Cut-start" %} {{ order.cut_start|date:"d M" }}</text>
+  <line x1="{{ chart.today_x }}" y1="0" x2="{{ chart.today_x }}" y2="{{ chart.h }}" class="today"/>
+  <text x="{{ chart.today_x }}" y="{{ chart.h|add:16 }}" class="lbl mid">{% translate "Today" %}</text>
+  <polyline points="{{ chart.points }}" class="inward"/>
+  <text x="0" y="{{ chart.h|add:30 }}" class="lbl">{{ chart.start|date:"d M" }}</text>
+  <text x="{{ chart.w }}" y="{{ chart.h|add:30 }}" class="lbl end">{{ chart.end|date:"d M" }}</text>
+</svg>
+<p class="legend"><span class="k inward"></span>{% translate "kg in-house + expected (cumulative)" %} <span class="k need"></span>{% translate "kg needed" %} <span class="k cut"></span>{% translate "cut-start" %}</p>
+</div>
+{% endif %}
+
+<h2>{% translate "Fabric lots" %}</h2>
+<table class="tbl lots">
+  <thead><tr><th>{% translate "Lot" %}</th><th>{% translate "Colour" %}</th><th>{% translate "Dia" %}</th><th class="num">{% translate "Planned kg" %}</th><th>{% translate "Expected" %}</th><th>{% translate "Stage" %}</th><th>{% translate "Last update" %}</th></tr></thead>
+  <tbody>{% for r in rows %}{% for lot in r.lots %}{% with u=lot.last_update %}
+    <tr><td><b>{{ lot.lot_no }}</b></td><td>{{ lot.colour }}</td><td>{{ lot.dia_line.table_dia }}"</td><td class="num">{{ lot.planned_kg|floatformat:1 }}</td>
+    <td class="{% if lot.expected_date > order.cut_start and lot.stage != 'in_house' %}bad{% endif %}">{{ lot.expected_date|date:"d M" }}</td>
+    <td><div class="steps">{% for label, state in lot.progress %}<span class="{{ state }}" title="{{ label }}">{{ label }}</span>{% endfor %}</div></td>
+    <td class="small">{% if u %}{{ u.kg|floatformat:0 }} kg{% if u.party %} · {{ u.party }}{% endif %}{% if u.reference %} · {{ u.reference }}{% endif %}<br><span class="muted">{{ u.date|date:"d M" }} · {{ u.created_by }}</span>{% endif %}</td></tr>
+  {% endwith %}{% endfor %}{% endfor %}</tbody>
+</table>
+
+{% if can_edit %}
+<div class="two">
+  <form method="post" class="card form-grid">{% csrf_token %}<h3>{% translate "Update a lot's stage" %}</h3>
+    {% for f in stage_form %}<label>{{ f.label }}{{ f }}{% for e in f.errors %}<small class="err">{{ e }}</small>{% endfor %}</label>{% endfor %}
+    <div class="actions"><button class="btn">{% translate "Save stage" %}</button></div></form>
+  <form method="post" class="card form-grid">{% csrf_token %}<h3>{% translate "Add a lot" %}</h3>
+    {% for f in lot_form %}<label>{{ f.label }}{{ f }}{% for e in f.errors %}<small class="err">{{ e }}</small>{% endfor %}</label>{% endfor %}
+    <div class="actions"><button class="btn" name="add_lot" value="1">{% translate "Add lot" %}</button></div></form>
+</div>
+{% endif %}
+
+{% if followups %}<h2>{% translate "Follow-ups" %}</h2>{% include "core/_followups.html" %}{% endif %}
+{% endblock %}

@@ -1,0 +1,9 @@
+{% load i18n %}<div class="cards">
+{% for f in followups %}
+  <div class="card msg">
+    <div class="row"><b>{{ f.party|default:_("No party yet") }}</b>{% if f.party.phone %}<span class="muted">{{ f.party.phone }}</span>{% endif %}</div>
+    <pre>{{ f.message }}</pre>
+    <button class="btn ghost small" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='{% translate "Copied" %} ✓'">{% translate "Copy for WhatsApp" %}</button>
+  </div>
+{% endfor %}
+</div>
