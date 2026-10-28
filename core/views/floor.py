@@ -12,6 +12,7 @@ from django.db.models import Max, Sum
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.utils.translation import gettext as _
+from django.utils.translation import ngettext
 
 from ..forms import CutHeadForm
 from ..models import (
@@ -341,7 +342,7 @@ def sewing(request):
         except ValueError:
             errors.append(_("Pieces must be whole numbers, and colour and size must belong to the line's order."))
         if not errors:
-            messages.success(request, _("%(n)s lines saved for %(h)s:00.") % {"n": saved, "h": hour})
+            messages.success(request, ngettext("%(n)s line saved for %(h)s:00.", "%(n)s lines saved for %(h)s:00.", saved) % {"n": saved, "h": hour})
             return redirect(f"{request.path}?date={day}&hour={hour}")
     entries = {(e.line_id, e.hour): e for e in SewingEntry.objects.filter(date=day)}
     rows = []

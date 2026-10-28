@@ -2,160 +2,22 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-28 17:24+0530\n"
+"POT-Creation-Date: 2026-10-28 19:16+0530\n"
 "Language: hi\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#, python-format
-msgid "%(n)s POs raised for %(order)s."
-msgstr "%(order)s के लिए %(n)s PO बने।"
+msgid "Select…"
+msgstr "चुनें…"
 
-msgid "Quantities must be whole numbers, not negative."
-msgstr "मात्रा पूरी संख्या हो, नेगेटिव नहीं।"
+msgid "Colours"
+msgstr "रंग"
 
-msgid "Enter the supplier's challan number."
-msgstr "सप्लायर का चालान नंबर डालें।"
+msgid "Comma separated, e.g. Navy, White"
+msgstr "कॉमा से अलग करें, जैसे Navy, White"
 
-msgid "Enter the quantity received for at least one line."
-msgstr "कम से कम एक लाइन की प्राप्त मात्रा डालें।"
-
-#, python-format
-msgid "Receipt saved against challan %(c)s."
-msgstr "चालान %(c)s पर रसीद सेव हुई।"
-
-#, python-format
-msgid "PO %(po)s — %(order)s / %(style)s / buyer PO %(bpo)s"
-msgstr "PO %(po)s — %(order)s / %(style)s / बायर PO %(bpo)s"
-
-#, python-format
-msgid "Required by %(d)s"
-msgstr "%(d)s तक चाहिए"
-
-msgid "Thank you — SY Exports"
-msgstr "धन्यवाद — SY Exports"
-
-msgid "Numbers only — no letters or negative values."
-msgstr "सिर्फ़ संख्या — अक्षर या नेगेटिव नहीं।"
-
-msgid "Enter at least one roll."
-msgstr "कम से कम एक रोल डालें।"
-
-msgid "Enter pieces cut for at least one size."
-msgstr "कम से कम एक साइज़ के कटे पीस डालें।"
-
-#, python-format
-msgid "Roll %(r)s: choose the fabric lot."
-msgstr "रोल %(r)s: फैब्रिक लॉट चुनें।"
-
-#, python-format
-msgid ""
-"Roll %(r)s is from lot %(lot)s (%(c)s, %(d)s\") — this lay is %(c2)s, "
-"%(d2)s\". Blocked."
-msgstr ""
-"रोल %(r)s लॉट %(lot)s (%(c)s, %(d)s\") का है — यह ले %(c2)s, %(d2)s\" का है।"
-" रोका गया।"
-
-#, python-format
-msgid "Roll %(r)s: returned + rejected kg is more than the roll weight."
-msgstr "रोल %(r)s: वापस + रिजेक्ट kg रोल के वज़न से ज़्यादा है।"
-
-#, python-format
-msgid "Roll %(r)s GSM %(g)s is outside %(t)s ±5%%."
-msgstr "रोल %(r)s का GSM %(g)s, %(t)s ±5%% से बाहर है।"
-
-#, python-format
-msgid "Roll %(r)s width %(w)s\" is under the %(d)s\" table dia."
-msgstr "रोल %(r)s की चौड़ाई %(w)s\" है, टेबल डाया %(d)s\" से कम।"
-
-#, python-format
-msgid "Lot %(lot)s has only %(kg)s kg in hand."
-msgstr "लॉट %(lot)s में सिर्फ़ %(kg)s kg बचा है।"
-
-#, python-format
-msgid ""
-"Consumption is %(p)s%% against costed — beyond ±10%%, so the lot is blocked."
-" Check the roll weights and piece counts."
-msgstr ""
-"खपत कॉस्टिंग से %(p)s%% है — ±10%% से ज़्यादा, इसलिए लॉट रोका गया। रोल वज़न "
-"और पीस गिनती जांचें।"
-
-msgid "Tick the confirmation to use rolls outside tolerance."
-msgstr "सीमा से बाहर रोल इस्तेमाल करने के लिए पुष्टि पर टिक करें।"
-
-#, python-format
-msgid "Cut lot %(c)s saved — consumption %(p)s%%."
-msgstr "कट लॉट %(c)s सेव हुआ — खपत %(p)s%%।"
-
-msgid ""
-"Pieces must be whole numbers, and colour and size must belong to the line's "
-"order."
-msgstr "पीस पूरी संख्या हों, और रंग व साइज़ लाइन के ऑर्डर के हों।"
-
-#, python-format
-msgid "%(n)s lines saved for %(h)s:00."
-msgstr "%(h)s:00 के लिए %(n)s लाइनें सेव हुईं।"
-
-#, python-format
-msgid "Only %(n)s passed pieces of %(c)s / %(s)s are waiting to be packed."
-msgstr "%(c)s / %(s)s के सिर्फ़ %(n)s पास पीस पैकिंग के लिए बाकी हैं।"
-
-msgid "Enter the carton numbers."
-msgstr "कार्टन नंबर डालें।"
-
-#, python-format
-msgid "Packed %(n)s pcs of %(c)s / %(s)s."
-msgstr "%(c)s / %(s)s के %(n)s पीस पैक हुए।"
-
-#, python-format
-msgid "Only %(n)s sewn pieces of %(c)s / %(s)s are waiting for checking."
-msgstr "%(c)s / %(s)s के सिर्फ़ %(n)s सिले पीस चेकिंग के लिए बाकी हैं।"
-
-msgid "Rework + reject can't be more than pieces checked."
-msgstr "रीवर्क + रिजेक्ट चेक किए पीस से ज़्यादा नहीं हो सकते।"
-
-#, python-format
-msgid "Only %(n)s pieces are in rework."
-msgstr "सिर्फ़ %(n)s पीस रीवर्क में हैं।"
-
-msgid "Choose the main defect for the rework and rejects."
-msgstr "रीवर्क और रिजेक्ट का मुख्य डिफेक्ट चुनें।"
-
-#, python-format
-msgid "Checked %(n)s pcs of %(c)s / %(s)s — %(p)s passed."
-msgstr "%(c)s / %(s)s के %(n)s पीस चेक — %(p)s पास।"
-
-#, python-format
-msgid "%(l)s under 80%% of target for the last 3 hours"
-msgstr "%(l)s पिछले 3 घंटे से लक्ष्य के 80%% से कम"
-
-msgid "Cut"
-msgstr "कटा"
-
-msgid "Sewn"
-msgstr "सिला"
-
-msgid "Passed"
-msgstr "पास"
-
-msgid "Packed"
-msgstr "पैक"
-
-#, python-format
-msgid "%(o)s: %(c)s %(d)s\" fabric lands after cut-start — %(kg)s kg late"
-msgstr "%(o)s: %(c)s %(d)s\" फैब्रिक कटिंग के बाद आएगा — %(kg)s kg देर से"
-
-#, python-format
-msgid "%(o)s: %(c)s %(d)s\" fabric short — %(kg)s kg still to book"
-msgstr "%(o)s: %(c)s %(d)s\" फैब्रिक कम — %(kg)s kg अभी बुक करना है"
-
-#, python-format
-msgid "Trims PO %(po)s from %(s)s is overdue"
-msgstr "%(s)s का ट्रिम्स PO %(po)s देर से है"
-
-#, python-format
-msgid "Cut lot %(c)s used %(p)s%% more fabric than costed"
-msgstr "कट लॉट %(c)s में कॉस्टिंग से %(p)s%% ज़्यादा फैब्रिक लगा"
+msgid "Colour"
+msgstr "रंग"
 
 msgid "Manual"
 msgstr "मैनुअल"
@@ -577,20 +439,29 @@ msgstr "लॉग आउट"
 msgid "Order"
 msgstr "ऑर्डर"
 
-msgid "Colour"
-msgstr "रंग"
-
 msgid "Size"
 msgstr "साइज़"
 
 msgid "Order qty"
 msgstr "ऑर्डर मात्रा"
 
+msgid "Cut"
+msgstr "कटा"
+
+msgid "Sewn"
+msgstr "सिला"
+
 msgid "Checked"
 msgstr "चेक किए"
 
 msgid "In rework"
 msgstr "रीवर्क में"
+
+msgid "Passed"
+msgstr "पास"
+
+msgid "Packed"
+msgstr "पैक"
 
 msgid "Balance"
 msgstr "बाकी"
@@ -701,9 +572,6 @@ msgstr "डिफेक्ट"
 
 msgid "Level"
 msgstr "स्तर"
-
-msgid "Select…"
-msgstr "चुनें…"
 
 msgid "Pieces cut"
 msgstr "कटे पीस"
@@ -893,9 +761,6 @@ msgstr "अभी कोई ऑर्डर नहीं।"
 msgid "Log in"
 msgstr "लॉग इन"
 
-msgid "Production system · buyer PO to packed carton"
-msgstr "प्रोडक्शन सिस्टम · बायर PO से पैक कार्टन तक"
-
 msgid "Wrong username or password."
 msgstr "गलत यूज़रनेम या पासवर्ड।"
 
@@ -907,6 +772,15 @@ msgstr "पासवर्ड"
 
 msgid "Demo logins"
 msgstr "डेमो लॉगिन"
+
+msgid "Data entry"
+msgstr "डेटा एंट्री"
+
+msgid "Fabric in-charge"
+msgstr "हाथ में फैब्रिक"
+
+msgid "Cutting in-charge"
+msgstr "कटिंग इंचार्ज"
 
 msgid "Colours × sizes"
 msgstr "रंग × साइज़"
@@ -1104,11 +978,145 @@ msgstr "इस स्टाइल पर अभी ट्रिम्स नह�
 msgid "No POs raised yet."
 msgstr "अभी कोई PO नहीं बना।"
 
-msgid "Colours"
-msgstr "रंग"
+#, python-format
+msgid "%(n)s POs raised for %(order)s."
+msgstr "%(order)s के लिए %(n)s PO बने।"
 
-msgid "Comma separated, e.g. Navy, White"
-msgstr "कॉमा से अलग करें, जैसे Navy, White"
+msgid "Quantities must be whole numbers, not negative."
+msgstr "मात्रा पूरी संख्या हो, नेगेटिव नहीं।"
+
+msgid "Enter the supplier's challan number."
+msgstr "सप्लायर का चालान नंबर डालें।"
+
+msgid "Enter the quantity received for at least one line."
+msgstr "कम से कम एक लाइन की प्राप्त मात्रा डालें।"
+
+#, python-format
+msgid "Receipt saved against challan %(c)s."
+msgstr "चालान %(c)s पर रसीद सेव हुई।"
+
+#, python-format
+msgid "PO %(po)s — %(order)s / %(style)s / buyer PO %(bpo)s"
+msgstr "PO %(po)s — %(order)s / %(style)s / बायर PO %(bpo)s"
+
+#, python-format
+msgid "Required by %(d)s"
+msgstr "%(d)s तक चाहिए"
+
+msgid "Thank you — SY Exports"
+msgstr "धन्यवाद — SY Exports"
+
+msgid "Numbers only — no letters or negative values."
+msgstr "सिर्फ़ संख्या — अक्षर या नेगेटिव नहीं।"
+
+msgid "Enter at least one roll."
+msgstr "कम से कम एक रोल डालें।"
+
+msgid "Enter pieces cut for at least one size."
+msgstr "कम से कम एक साइज़ के कटे पीस डालें।"
+
+#, python-format
+msgid "Roll %(r)s: choose the fabric lot."
+msgstr "रोल %(r)s: फैब्रिक लॉट चुनें।"
+
+#, python-format
+msgid ""
+"Roll %(r)s is from lot %(lot)s (%(c)s, %(d)s\") — this lay is %(c2)s, "
+"%(d2)s\". Blocked."
+msgstr ""
+"रोल %(r)s लॉट %(lot)s (%(c)s, %(d)s\") का है — यह ले %(c2)s, %(d2)s\" का है।"
+" रोका गया।"
+
+#, python-format
+msgid "Roll %(r)s: returned + rejected kg is more than the roll weight."
+msgstr "रोल %(r)s: वापस + रिजेक्ट kg रोल के वज़न से ज़्यादा है।"
+
+#, python-format
+msgid "Roll %(r)s GSM %(g)s is outside %(t)s ±5%%."
+msgstr "रोल %(r)s का GSM %(g)s, %(t)s ±5%% से बाहर है।"
+
+#, python-format
+msgid "Roll %(r)s width %(w)s\" is under the %(d)s\" table dia."
+msgstr "रोल %(r)s की चौड़ाई %(w)s\" है, टेबल डाया %(d)s\" से कम।"
+
+#, python-format
+msgid "Lot %(lot)s has only %(kg)s kg in hand."
+msgstr "लॉट %(lot)s में सिर्फ़ %(kg)s kg बचा है।"
+
+#, python-format
+msgid ""
+"Consumption is %(p)s%% against costed — beyond ±10%%, so the lot is blocked."
+" Check the roll weights and piece counts."
+msgstr ""
+"खपत कॉस्टिंग से %(p)s%% है — ±10%% से ज़्यादा, इसलिए लॉट रोका गया। रोल वज़न "
+"और पीस गिनती जांचें।"
+
+msgid "Tick the confirmation to use rolls outside tolerance."
+msgstr "सीमा से बाहर रोल इस्तेमाल करने के लिए पुष्टि पर टिक करें।"
+
+#, python-format
+msgid "Cut lot %(c)s saved — consumption %(p)s%%."
+msgstr "कट लॉट %(c)s सेव हुआ — खपत %(p)s%%।"
+
+msgid ""
+"Pieces must be whole numbers, and colour and size must belong to the line's "
+"order."
+msgstr "पीस पूरी संख्या हों, और रंग व साइज़ लाइन के ऑर्डर के हों।"
+
+#, python-format
+msgid "%(n)s line saved for %(h)s:00."
+msgid_plural "%(n)s lines saved for %(h)s:00."
+msgstr[0] "%(h)s:00 के लिए %(n)s लाइन सेव हुई।"
+msgstr[1] "%(h)s:00 के लिए %(n)s लाइनें सेव हुईं।"
+
+#, python-format
+msgid "Only %(n)s passed pieces of %(c)s / %(s)s are waiting to be packed."
+msgstr "%(c)s / %(s)s के सिर्फ़ %(n)s पास पीस पैकिंग के लिए बाकी हैं।"
+
+msgid "Enter the carton numbers."
+msgstr "कार्टन नंबर डालें।"
+
+#, python-format
+msgid "Packed %(n)s pcs of %(c)s / %(s)s."
+msgstr "%(c)s / %(s)s के %(n)s पीस पैक हुए।"
+
+#, python-format
+msgid "Only %(n)s sewn pieces of %(c)s / %(s)s are waiting for checking."
+msgstr "%(c)s / %(s)s के सिर्फ़ %(n)s सिले पीस चेकिंग के लिए बाकी हैं।"
+
+msgid "Rework + reject can't be more than pieces checked."
+msgstr "रीवर्क + रिजेक्ट चेक किए पीस से ज़्यादा नहीं हो सकते।"
+
+#, python-format
+msgid "Only %(n)s pieces are in rework."
+msgstr "सिर्फ़ %(n)s पीस रीवर्क में हैं।"
+
+msgid "Choose the main defect for the rework and rejects."
+msgstr "रीवर्क और रिजेक्ट का मुख्य डिफेक्ट चुनें।"
+
+#, python-format
+msgid "Checked %(n)s pcs of %(c)s / %(s)s — %(p)s passed."
+msgstr "%(c)s / %(s)s के %(n)s पीस चेक — %(p)s पास।"
+
+#, python-format
+msgid "%(l)s under 80%% of target for the last 3 hours"
+msgstr "%(l)s पिछले 3 घंटे से लक्ष्य के 80%% से कम"
+
+#, python-format
+msgid "%(o)s: %(c)s %(d)s\" fabric lands after cut-start — %(kg)s kg late"
+msgstr "%(o)s: %(c)s %(d)s\" फैब्रिक कटिंग के बाद आएगा — %(kg)s kg देर से"
+
+#, python-format
+msgid "%(o)s: %(c)s %(d)s\" fabric short — %(kg)s kg still to book"
+msgstr "%(o)s: %(c)s %(d)s\" फैब्रिक कम — %(kg)s kg अभी बुक करना है"
+
+#, python-format
+msgid "Trims PO %(po)s from %(s)s is overdue"
+msgstr "%(s)s का ट्रिम्स PO %(po)s देर से है"
+
+#, python-format
+msgid "Cut lot %(c)s used %(p)s%% more fabric than costed"
+msgstr "कट लॉट %(c)s में कॉस्टिंग से %(p)s%% ज़्यादा फैब्रिक लगा"
 
 msgid "Order created. Enter quantities and consumption."
 msgstr "ऑर्डर बन गया। मात्रा और खपत डालें।"
@@ -1170,6 +1178,9 @@ msgstr "%(d)s तक"
 
 msgid "lot"
 msgstr "लॉट"
+
+#~ msgid "Production system · buyer PO to packed carton"
+#~ msgstr "प्रोडक्शन सिस्टम · बायर PO से पैक कार्टन तक"
 
 #~ msgid "Copy for WhatsApp"
 #~ msgstr "WhatsApp के लिए कॉपी करें"
@@ -1275,12 +1286,6 @@ msgstr "लॉट"
 
 #~ msgid "Needle line (major)"
 #~ msgstr "नीडल लाइन (मेजर)"
-
-#~ msgid "Data entry"
-#~ msgstr "डेटा एंट्री"
-
-#~ msgid "Cutting in-charge"
-#~ msgstr "कटिंग इंचार्ज"
 
 #~ msgid "Supervisor"
 #~ msgstr "सुपरवाइज़र"

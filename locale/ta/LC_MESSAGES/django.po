@@ -2,168 +2,22 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-28 17:24+0530\n"
+"POT-Creation-Date: 2026-10-28 19:16+0530\n"
 "Language: ta\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#, python-format
-msgid "%(n)s POs raised for %(order)s."
-msgstr "%(order)s-க்கு %(n)s PO உருவாக்கப்பட்டது."
+msgid "Select…"
+msgstr "தேர்ந்தெடு…"
 
-msgid "Quantities must be whole numbers, not negative."
-msgstr "அளவு முழு எண்ணாக இருக்க வேண்டும், எதிர்மறை கூடாது."
+msgid "Colours"
+msgstr "நிறங்கள்"
 
-msgid "Enter the supplier's challan number."
-msgstr "சப்ளையரின் சலான் எண்ணை உள்ளிடவும்."
+msgid "Comma separated, e.g. Navy, White"
+msgstr "காற்புள்ளியால் பிரிக்கவும், எ.கா. Navy, White"
 
-msgid "Enter the quantity received for at least one line."
-msgstr "குறைந்தது ஒரு வரிக்கு பெற்ற அளவை உள்ளிடவும்."
-
-#, python-format
-msgid "Receipt saved against challan %(c)s."
-msgstr "சலான் %(c)s-க்கு ரசீது சேமிக்கப்பட்டது."
-
-#, python-format
-msgid "PO %(po)s — %(order)s / %(style)s / buyer PO %(bpo)s"
-msgstr "PO %(po)s — %(order)s / %(style)s / வாங்குபவர் PO %(bpo)s"
-
-#, python-format
-msgid "Required by %(d)s"
-msgstr "%(d)s-க்குள் தேவை"
-
-msgid "Thank you — SY Exports"
-msgstr "நன்றி — SY Exports"
-
-msgid "Numbers only — no letters or negative values."
-msgstr "எண்கள் மட்டும் — எழுத்துகள் அல்லது எதிர்மறை கூடாது."
-
-msgid "Enter at least one roll."
-msgstr "குறைந்தது ஒரு ரோலை உள்ளிடவும்."
-
-msgid "Enter pieces cut for at least one size."
-msgstr "குறைந்தது ஒரு அளவுக்கு வெட்டிய பீஸ்களை உள்ளிடவும்."
-
-#, python-format
-msgid "Roll %(r)s: choose the fabric lot."
-msgstr "ரோல் %(r)s: துணி லாட்டைத் தேர்ந்தெடுக்கவும்."
-
-#, python-format
-msgid ""
-"Roll %(r)s is from lot %(lot)s (%(c)s, %(d)s\") — this lay is %(c2)s, "
-"%(d2)s\". Blocked."
-msgstr ""
-"ரோல் %(r)s லாட் %(lot)s (%(c)s, %(d)s\") இலிருந்து — இந்த லே %(c2)s, "
-"%(d2)s\". தடுக்கப்பட்டது."
-
-#, python-format
-msgid "Roll %(r)s: returned + rejected kg is more than the roll weight."
-msgstr "ரோல் %(r)s: திரும்பிய + நிராகரித்த kg ரோல் எடையை விட அதிகம்."
-
-#, python-format
-msgid "Roll %(r)s GSM %(g)s is outside %(t)s ±5%%."
-msgstr "ரோல் %(r)s GSM %(g)s, %(t)s ±5%% வரம்புக்கு வெளியே."
-
-#, python-format
-msgid "Roll %(r)s width %(w)s\" is under the %(d)s\" table dia."
-msgstr "ரோல் %(r)s அகலம் %(w)s\", டேபிள் டயா %(d)s\" ஐ விடக் குறைவு."
-
-#, python-format
-msgid "Lot %(lot)s has only %(kg)s kg in hand."
-msgstr "லாட் %(lot)s-இல் %(kg)s kg மட்டுமே கையில் உள்ளது."
-
-#, python-format
-msgid ""
-"Consumption is %(p)s%% against costed — beyond ±10%%, so the lot is blocked."
-" Check the roll weights and piece counts."
-msgstr ""
-"நுகர்வு கணக்கை விட %(p)s%% — ±10%% ஐத் தாண்டியதால் லாட் தடுக்கப்பட்டது. ரோல்"
-" எடை, பீஸ் எண்ணிக்கையைச் சரிபார்க்கவும்."
-
-msgid "Tick the confirmation to use rolls outside tolerance."
-msgstr ""
-"வரம்புக்கு வெளியே உள்ள ரோல்களைப் பயன்படுத்த உறுதிப்படுத்தலைத் தேர்வு "
-"செய்யவும்."
-
-#, python-format
-msgid "Cut lot %(c)s saved — consumption %(p)s%%."
-msgstr "கட் லாட் %(c)s சேமிக்கப்பட்டது — நுகர்வு %(p)s%%."
-
-msgid ""
-"Pieces must be whole numbers, and colour and size must belong to the line's "
-"order."
-msgstr ""
-"பீஸ் முழு எண்ணாக இருக்க வேண்டும்; நிறமும் அளவும் லைனின் ஆர்டருக்கு உரியதாக "
-"இருக்க வேண்டும்."
-
-#, python-format
-msgid "%(n)s lines saved for %(h)s:00."
-msgstr "%(h)s:00-க்கு %(n)s லைன்கள் சேமிக்கப்பட்டன."
-
-#, python-format
-msgid "Only %(n)s passed pieces of %(c)s / %(s)s are waiting to be packed."
-msgstr ""
-"%(c)s / %(s)s-இல் %(n)s தேர்ச்சி பீஸ்கள் மட்டுமே பேக்கிங்கிற்கு "
-"காத்திருக்கின்றன."
-
-msgid "Enter the carton numbers."
-msgstr "கார்டன் எண்களை உள்ளிடவும்."
-
-#, python-format
-msgid "Packed %(n)s pcs of %(c)s / %(s)s."
-msgstr "%(c)s / %(s)s-இல் %(n)s பீஸ் பேக் செய்யப்பட்டது."
-
-#, python-format
-msgid "Only %(n)s sewn pieces of %(c)s / %(s)s are waiting for checking."
-msgstr ""
-"%(c)s / %(s)s-இல் %(n)s தைத்த பீஸ்கள் மட்டுமே சோதனைக்குக் காத்திருக்கின்றன."
-
-msgid "Rework + reject can't be more than pieces checked."
-msgstr "ரீவர்க் + நிராகரிப்பு சோதித்த பீஸ்களை விட அதிகமாக இருக்கக்கூடாது."
-
-#, python-format
-msgid "Only %(n)s pieces are in rework."
-msgstr "%(n)s பீஸ்கள் மட்டுமே ரீவர்க்கில் உள்ளன."
-
-msgid "Choose the main defect for the rework and rejects."
-msgstr "ரீவர்க், நிராகரிப்புக்கான முக்கிய குறைபாட்டைத் தேர்ந்தெடுக்கவும்."
-
-#, python-format
-msgid "Checked %(n)s pcs of %(c)s / %(s)s — %(p)s passed."
-msgstr "%(c)s / %(s)s-இல் %(n)s பீஸ் சோதிக்கப்பட்டது — %(p)s தேர்ச்சி."
-
-#, python-format
-msgid "%(l)s under 80%% of target for the last 3 hours"
-msgstr "%(l)s கடந்த 3 மணி நேரமாக இலக்கின் 80%% க்குக் கீழ்"
-
-msgid "Cut"
-msgstr "வெட்டியது"
-
-msgid "Sewn"
-msgstr "தைத்தது"
-
-msgid "Passed"
-msgstr "தேர்ச்சி"
-
-msgid "Packed"
-msgstr "பேக் செய்தது"
-
-#, python-format
-msgid "%(o)s: %(c)s %(d)s\" fabric lands after cut-start — %(kg)s kg late"
-msgstr "%(o)s: %(c)s %(d)s\" துணி கட்டிங்கிற்குப் பின் வரும் — %(kg)s kg தாமதம்"
-
-#, python-format
-msgid "%(o)s: %(c)s %(d)s\" fabric short — %(kg)s kg still to book"
-msgstr ""
-"%(o)s: %(c)s %(d)s\" துணி குறைவு — இன்னும் %(kg)s kg புக் செய்ய வேண்டும்"
-
-#, python-format
-msgid "Trims PO %(po)s from %(s)s is overdue"
-msgstr "%(s)s-இன் டிரிம்ஸ் PO %(po)s தாமதம்"
-
-#, python-format
-msgid "Cut lot %(c)s used %(p)s%% more fabric than costed"
-msgstr "கட் லாட் %(c)s கணக்கை விட %(p)s%% அதிக துணி பயன்படுத்தியது"
+msgid "Colour"
+msgstr "நிறம்"
 
 msgid "Manual"
 msgstr "கைமுறை"
@@ -585,20 +439,29 @@ msgstr "வெளியேறு"
 msgid "Order"
 msgstr "ஆர்டர்"
 
-msgid "Colour"
-msgstr "நிறம்"
-
 msgid "Size"
 msgstr "அளவு"
 
 msgid "Order qty"
 msgstr "ஆர்டர் அளவு"
 
+msgid "Cut"
+msgstr "வெட்டியது"
+
+msgid "Sewn"
+msgstr "தைத்தது"
+
 msgid "Checked"
 msgstr "சோதித்தது"
 
 msgid "In rework"
 msgstr "ரீவர்க்கில்"
+
+msgid "Passed"
+msgstr "தேர்ச்சி"
+
+msgid "Packed"
+msgstr "பேக் செய்தது"
 
 msgid "Balance"
 msgstr "மீதம்"
@@ -709,9 +572,6 @@ msgstr "குறைபாடு"
 
 msgid "Level"
 msgstr "நிலை"
-
-msgid "Select…"
-msgstr "தேர்ந்தெடு…"
 
 msgid "Pieces cut"
 msgstr "வெட்டிய பீஸ்"
@@ -903,9 +763,6 @@ msgstr "இன்னும் ஆர்டர் இல்லை."
 msgid "Log in"
 msgstr "உள்நுழை"
 
-msgid "Production system · buyer PO to packed carton"
-msgstr "உற்பத்தி அமைப்பு · வாங்குபவர் PO முதல் பேக் கார்டன் வரை"
-
 msgid "Wrong username or password."
 msgstr "தவறான பயனர் பெயர் அல்லது கடவுச்சொல்."
 
@@ -917,6 +774,15 @@ msgstr "கடவுச்சொல்"
 
 msgid "Demo logins"
 msgstr "டெமோ லாகின்"
+
+msgid "Data entry"
+msgstr "தரவு பதிவு"
+
+msgid "Fabric in-charge"
+msgstr "கையில் உள்ள துணி"
+
+msgid "Cutting in-charge"
+msgstr "கட்டிங் பொறுப்பாளர்"
 
 msgid "Colours × sizes"
 msgstr "நிறங்கள் × அளவுகள்"
@@ -1115,11 +981,153 @@ msgstr "இந்த ஸ்டைலுக்கு இன்னும் டி
 msgid "No POs raised yet."
 msgstr "இன்னும் PO இல்லை."
 
-msgid "Colours"
-msgstr "நிறங்கள்"
+#, python-format
+msgid "%(n)s POs raised for %(order)s."
+msgstr "%(order)s-க்கு %(n)s PO உருவாக்கப்பட்டது."
 
-msgid "Comma separated, e.g. Navy, White"
-msgstr "காற்புள்ளியால் பிரிக்கவும், எ.கா. Navy, White"
+msgid "Quantities must be whole numbers, not negative."
+msgstr "அளவு முழு எண்ணாக இருக்க வேண்டும், எதிர்மறை கூடாது."
+
+msgid "Enter the supplier's challan number."
+msgstr "சப்ளையரின் சலான் எண்ணை உள்ளிடவும்."
+
+msgid "Enter the quantity received for at least one line."
+msgstr "குறைந்தது ஒரு வரிக்கு பெற்ற அளவை உள்ளிடவும்."
+
+#, python-format
+msgid "Receipt saved against challan %(c)s."
+msgstr "சலான் %(c)s-க்கு ரசீது சேமிக்கப்பட்டது."
+
+#, python-format
+msgid "PO %(po)s — %(order)s / %(style)s / buyer PO %(bpo)s"
+msgstr "PO %(po)s — %(order)s / %(style)s / வாங்குபவர் PO %(bpo)s"
+
+#, python-format
+msgid "Required by %(d)s"
+msgstr "%(d)s-க்குள் தேவை"
+
+msgid "Thank you — SY Exports"
+msgstr "நன்றி — SY Exports"
+
+msgid "Numbers only — no letters or negative values."
+msgstr "எண்கள் மட்டும் — எழுத்துகள் அல்லது எதிர்மறை கூடாது."
+
+msgid "Enter at least one roll."
+msgstr "குறைந்தது ஒரு ரோலை உள்ளிடவும்."
+
+msgid "Enter pieces cut for at least one size."
+msgstr "குறைந்தது ஒரு அளவுக்கு வெட்டிய பீஸ்களை உள்ளிடவும்."
+
+#, python-format
+msgid "Roll %(r)s: choose the fabric lot."
+msgstr "ரோல் %(r)s: துணி லாட்டைத் தேர்ந்தெடுக்கவும்."
+
+#, python-format
+msgid ""
+"Roll %(r)s is from lot %(lot)s (%(c)s, %(d)s\") — this lay is %(c2)s, "
+"%(d2)s\". Blocked."
+msgstr ""
+"ரோல் %(r)s லாட் %(lot)s (%(c)s, %(d)s\") இலிருந்து — இந்த லே %(c2)s, "
+"%(d2)s\". தடுக்கப்பட்டது."
+
+#, python-format
+msgid "Roll %(r)s: returned + rejected kg is more than the roll weight."
+msgstr "ரோல் %(r)s: திரும்பிய + நிராகரித்த kg ரோல் எடையை விட அதிகம்."
+
+#, python-format
+msgid "Roll %(r)s GSM %(g)s is outside %(t)s ±5%%."
+msgstr "ரோல் %(r)s GSM %(g)s, %(t)s ±5%% வரம்புக்கு வெளியே."
+
+#, python-format
+msgid "Roll %(r)s width %(w)s\" is under the %(d)s\" table dia."
+msgstr "ரோல் %(r)s அகலம் %(w)s\", டேபிள் டயா %(d)s\" ஐ விடக் குறைவு."
+
+#, python-format
+msgid "Lot %(lot)s has only %(kg)s kg in hand."
+msgstr "லாட் %(lot)s-இல் %(kg)s kg மட்டுமே கையில் உள்ளது."
+
+#, python-format
+msgid ""
+"Consumption is %(p)s%% against costed — beyond ±10%%, so the lot is blocked."
+" Check the roll weights and piece counts."
+msgstr ""
+"நுகர்வு கணக்கை விட %(p)s%% — ±10%% ஐத் தாண்டியதால் லாட் தடுக்கப்பட்டது. ரோல்"
+" எடை, பீஸ் எண்ணிக்கையைச் சரிபார்க்கவும்."
+
+msgid "Tick the confirmation to use rolls outside tolerance."
+msgstr ""
+"வரம்புக்கு வெளியே உள்ள ரோல்களைப் பயன்படுத்த உறுதிப்படுத்தலைத் தேர்வு "
+"செய்யவும்."
+
+#, python-format
+msgid "Cut lot %(c)s saved — consumption %(p)s%%."
+msgstr "கட் லாட் %(c)s சேமிக்கப்பட்டது — நுகர்வு %(p)s%%."
+
+msgid ""
+"Pieces must be whole numbers, and colour and size must belong to the line's "
+"order."
+msgstr ""
+"பீஸ் முழு எண்ணாக இருக்க வேண்டும்; நிறமும் அளவும் லைனின் ஆர்டருக்கு உரியதாக "
+"இருக்க வேண்டும்."
+
+#, python-format
+msgid "%(n)s line saved for %(h)s:00."
+msgid_plural "%(n)s lines saved for %(h)s:00."
+msgstr[0] "%(h)s:00-க்கு %(n)s லைன் சேமிக்கப்பட்டது."
+msgstr[1] "%(h)s:00-க்கு %(n)s லைன்கள் சேமிக்கப்பட்டன."
+
+#, python-format
+msgid "Only %(n)s passed pieces of %(c)s / %(s)s are waiting to be packed."
+msgstr ""
+"%(c)s / %(s)s-இல் %(n)s தேர்ச்சி பீஸ்கள் மட்டுமே பேக்கிங்கிற்கு "
+"காத்திருக்கின்றன."
+
+msgid "Enter the carton numbers."
+msgstr "கார்டன் எண்களை உள்ளிடவும்."
+
+#, python-format
+msgid "Packed %(n)s pcs of %(c)s / %(s)s."
+msgstr "%(c)s / %(s)s-இல் %(n)s பீஸ் பேக் செய்யப்பட்டது."
+
+#, python-format
+msgid "Only %(n)s sewn pieces of %(c)s / %(s)s are waiting for checking."
+msgstr ""
+"%(c)s / %(s)s-இல் %(n)s தைத்த பீஸ்கள் மட்டுமே சோதனைக்குக் காத்திருக்கின்றன."
+
+msgid "Rework + reject can't be more than pieces checked."
+msgstr "ரீவர்க் + நிராகரிப்பு சோதித்த பீஸ்களை விட அதிகமாக இருக்கக்கூடாது."
+
+#, python-format
+msgid "Only %(n)s pieces are in rework."
+msgstr "%(n)s பீஸ்கள் மட்டுமே ரீவர்க்கில் உள்ளன."
+
+msgid "Choose the main defect for the rework and rejects."
+msgstr "ரீவர்க், நிராகரிப்புக்கான முக்கிய குறைபாட்டைத் தேர்ந்தெடுக்கவும்."
+
+#, python-format
+msgid "Checked %(n)s pcs of %(c)s / %(s)s — %(p)s passed."
+msgstr "%(c)s / %(s)s-இல் %(n)s பீஸ் சோதிக்கப்பட்டது — %(p)s தேர்ச்சி."
+
+#, python-format
+msgid "%(l)s under 80%% of target for the last 3 hours"
+msgstr "%(l)s கடந்த 3 மணி நேரமாக இலக்கின் 80%% க்குக் கீழ்"
+
+#, python-format
+msgid "%(o)s: %(c)s %(d)s\" fabric lands after cut-start — %(kg)s kg late"
+msgstr "%(o)s: %(c)s %(d)s\" துணி கட்டிங்கிற்குப் பின் வரும் — %(kg)s kg தாமதம்"
+
+#, python-format
+msgid "%(o)s: %(c)s %(d)s\" fabric short — %(kg)s kg still to book"
+msgstr ""
+"%(o)s: %(c)s %(d)s\" துணி குறைவு — இன்னும் %(kg)s kg புக் செய்ய வேண்டும்"
+
+#, python-format
+msgid "Trims PO %(po)s from %(s)s is overdue"
+msgstr "%(s)s-இன் டிரிம்ஸ் PO %(po)s தாமதம்"
+
+#, python-format
+msgid "Cut lot %(c)s used %(p)s%% more fabric than costed"
+msgstr "கட் லாட் %(c)s கணக்கை விட %(p)s%% அதிக துணி பயன்படுத்தியது"
 
 msgid "Order created. Enter quantities and consumption."
 msgstr "ஆர்டர் உருவானது. அளவு மற்றும் நுகர்வை உள்ளிடவும்."
@@ -1183,6 +1191,9 @@ msgstr "%(d)s அன்று"
 
 msgid "lot"
 msgstr "லாட்"
+
+#~ msgid "Production system · buyer PO to packed carton"
+#~ msgstr "உற்பத்தி அமைப்பு · வாங்குபவர் PO முதல் பேக் கார்டன் வரை"
 
 #~ msgid "Copy for WhatsApp"
 #~ msgstr "WhatsApp-க்கு நகலெடு"
@@ -1293,12 +1304,6 @@ msgstr "லாட்"
 
 #~ msgid "Needle line (major)"
 #~ msgstr "நீடில் லைன் (பெரியது)"
-
-#~ msgid "Data entry"
-#~ msgstr "தரவு பதிவு"
-
-#~ msgid "Cutting in-charge"
-#~ msgstr "கட்டிங் பொறுப்பாளர்"
 
 #~ msgid "Supervisor"
 #~ msgstr "சூப்பர்வைசர்"
